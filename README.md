@@ -20,16 +20,16 @@ DIYレシピを投稿し、モノづくりの楽しさを共有することで
 家具やアクセサリーの製作や、家屋のリフォームを個人で行いたい時
 
 ## 設計書
-ER図
-https://drive.google.com/file/d/1sU0zGnMQyhB3CEXUGagnFPP1Eip1llZQ/view?usp=sharing
-ワイヤーフレーム
-https://drive.google.com/file/d/1I7HQsEuvZGF9uf-sNHFA3aPNnupChoOT/view?usp=sharing
-テーブル定義書
-https://drive.google.com/file/d/1Vfi8hPgs_1fJhwBeaXgLXxXFt3ug9YKa/view?usp=sharing
-アプリケーション設計書
-https://drive.google.com/file/d/1MwXmeIpjtqh-x2Vvo2VZWS4RoigtNPCH/view?usp=sharing
-WBSシート
-https://docs.google.com/spreadsheets/d/1hr2Y4wU_j3SqFvmSXkTC-Iqp4PHgPASlxOQVwQjxpEM/edit?usp=sharing
+ER図<br>
+https://drive.google.com/file/d/1sU0zGnMQyhB3CEXUGagnFPP1Eip1llZQ/view?usp=sharing<br>
+ワイヤーフレーム<br>
+https://drive.google.com/file/d/1I7HQsEuvZGF9uf-sNHFA3aPNnupChoOT/view?usp=sharing<br>
+テーブル定義書<br>
+https://drive.google.com/file/d/1Vfi8hPgs_1fJhwBeaXgLXxXFt3ug9YKa/view?usp=sharing<br>
+アプリケーション設計書<br>
+https://drive.google.com/file/d/1MwXmeIpjtqh-x2Vvo2VZWS4RoigtNPCH/view?usp=sharing<br>
+WBSシート<br>
+https://docs.google.com/spreadsheets/d/1hr2Y4wU_j3SqFvmSXkTC-Iqp4PHgPASlxOQVwQjxpEM/edit?usp=sharing<br>
 
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/1WAnpi1uCh2AO7If5Z9gd8fyW9XAfGKFeTVHEfGWNF3A/edit?usp=sharing
