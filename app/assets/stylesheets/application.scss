@@ -13,3 +13,29 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700&display=swap');
+
+ header {
+   background-color: coral;
+ }
+
+ ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+li {
+  list-style-type: none;
+
+  color: #000;
+  flex-grow: 1;
+  text-align: center;
+}
+h2 {
+font-family: 'M PLUS Rounded 1c', sans-serif;
+}

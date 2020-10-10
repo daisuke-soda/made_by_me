@@ -10,6 +10,49 @@
   </head>
 
   <body>
+    <header>
+      <div class="container">
+        <div class="row">
+          <nav class="navbar-header navbar-left">
+            <a class="navbar-brand">
+              <% if admin_signed_in? %>
+                <%= link_to "Made by Me",admins_root_path %>
+              <% else %>
+                <%= link_to "Made by Me",root_path %>
+              <% end %>
+            </a>
+          </nav>
+
+          <ul class="list-inline">
+
+            <!-- ユーザーがログインしている -->
+            <% if user_signed_in? %>
+              <li class= "user_name"><%= current_user.name %>さん</li>
+              <li><%= link_to " マイページ", user_path(current_user) %></li>
+              <li><%= link_to " お気に入り", favorites_path %></li>
+              <li><%= link_to " レシピ一覧", recipes_path %></li>
+              <li><%= link_to " ログアウト", destroy_user_session_path, method: :delete %></li>
+              <li><%= link_to " レシピを投稿する", new_recipe_path %></li>
+
+            <!-- 管理者がログインしている -->
+            <% elsif admin_signed_in? %>
+              <li><%= link_to " ジャンル一覧", admins_genres %></li>
+              <li><%= link_to " 会員一覧", admins_user_path %></li>
+              <li><%= link_to " レシピ一覧", admins_recipes_path %></li>
+              <li><%= link_to " ログアウト", destroy_admin_session_path, method: :delete %></li>
+ 
+            <!-- どちらもログインしていない -->
+            <% else %>
+              <li><%= link_to " About", home_about_path %></li>
+              <li><%= link_to " ユーザー登録", new_user_registration_path %></li>
+              <li><%= link_to " ログイン", new_user_session_path %></li>
+              <li><%= link_to " かんたんログイン" %></li><!-- 機能実装後パス追加 -->
+              <li><%= link_to " レシピを投稿する", new_recipe_path %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </header>
     <%= yield %>
   </body>
 </html>
