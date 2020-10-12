@@ -1,2 +1,16 @@
-<h1>Admins::Users#edit</h1>
-<p>Find me in app/views/admins/users/edit.html.erb</p>
+<%= form_for @user do |f| %>
+
+  <%= f.label :"名前" %>
+  <%= f.text_field :name %>
+
+  <%= f.label :"メールアドレス" %>
+  <%= f.text_field :email %>
+
+  <%= f.label :"プロフィール画像" %>
+  <%= f.attachment_field :profile_image %>
+
+  <%= f.submit %>
+
+  <%= link_to "削除",admins_user_path(@user), method: :delete, data: {confirm: "本当に削除しますか？"} %>
+
+<% end %>

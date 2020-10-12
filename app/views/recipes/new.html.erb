@@ -1,2 +1,26 @@
 <h1>Recipes#new</h1>
 <p>Find me in app/views/recipes/new.html.erb</p>
+
+<%= form_for @recipe do |f| %>
+
+  <%= f.label :"レシピタイトル" %>
+  <%= f.text_field :name %>
+
+  <%= f.label :"トップ画像" %>
+  <%= f.attachment_field :recipe_image %>
+
+  <%= f.label :"レシピの説明" %>
+  <%= f.text_area :introduction %>
+
+  <%= f.label :"かかった費用" %>
+  <%= f.text_field :cost %>
+
+  <%= f.label :"所要時間" %>
+  <%= f.text_field :time %>
+
+  <%= f.label :"材料・工具" %>
+  <%= f.text_field :material %>
+
+  <%= f.submit %>
+
+<% end %>

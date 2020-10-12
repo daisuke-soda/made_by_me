@@ -1,2 +1,5 @@
-<h1>Admins::Users#show</h1>
-<p>Find me in app/views/admins/users/show.html.erb</p>
+<%= @user.name %>
+<%= @user.email %>
+
+<%= link_to "退会する",admins_user_path(@user), method: :delete, data: {confirm: "本当に削除しますか？"} %>
+

@@ -1,2 +1,10 @@
-<h1>Recipes#index</h1>
-<p>Find me in app/views/recipes/index.html.erb</p>
+<% @recipes.each do |recipe| %>
+
+<%= attachment_image_tag recipe, :recipe_image  %>
+<%= attachment_image_tag recipe.user, :profile_image, fallback: "no-image.png"  %>
+
+
+<%= recipe.user.name %>
+<%= recipe.name %>
+
+<% end %>
