@@ -5,39 +5,49 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header>
-      <div class="container">
-        <div class="row">
-          <nav class="navbar-header navbar-left">
+      <nav class="navbar navbar-default ">
+        <div class="container-fluid">
+          <div class="navbar-header navbar-left">
+            <button type="button" class="navbar-toggle collapsed"data-toggle="collapse"data-target="#navbarEexample8">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
             <a class="navbar-brand">
               <% if admin_signed_in? %>
-                <%= link_to "Made by Me",admins_root_path %>
+                <%= link_to image_tag("made by me logo1.png"),admins_root_path %>
               <% else %>
-                <%= link_to "Made by Me",root_path %>
+                <%= link_to image_tag("made by me logo1.png"),root_path %>
               <% end %>
             </a>
-          </nav>
+          </div>
 
-          <ul class="list-inline">
+          <div class="collapse navbar-collapse" id="navbarEexample7">
+
+            <ul class="nav navbar-nav" style="margin: auto; background-color: transparent;">
 
             <!-- ユーザーがログインしている -->
             <% if user_signed_in? %>
-              <li class= "user_name"><%= current_user.name %>さん</li>
+
               <li><%= link_to " マイページ", user_path(current_user) %></li>
               <li><%= link_to " お気に入り", favorites_path %></li>
               <li><%= link_to " レシピ一覧", recipes_path %></li>
               <li><%= link_to " ログアウト", destroy_user_session_path, method: :delete %></li>
               <li><%= link_to " レシピを投稿する", new_recipe_path %></li>
+              <p class="navbar-text navbar-right">ようこそ<%= current_user.name %>さん</p>
 
             <!-- 管理者がログインしている -->
             <% elsif admin_signed_in? %>
-              <li><%= link_to " ジャンル一覧", admins_genres %></li>
-              <li><%= link_to " 会員一覧", admins_user_path %></li>
+              <li><%= link_to " ジャンル一覧", admins_genres_path %></li>
+              <li><%= link_to " 会員一覧", admins_users_path %></li>
               <li><%= link_to " レシピ一覧", admins_recipes_path %></li>
               <li><%= link_to " ログアウト", destroy_admin_session_path, method: :delete %></li>
  
@@ -49,9 +59,10 @@
               <li><%= link_to " かんたんログイン" %></li><!-- 機能実装後パス追加 -->
               <li><%= link_to " レシピを投稿する", new_recipe_path %></li>
             <% end %>
-          </ul>
+            </ul>
+          </div>
         </div>
-      </div>
+      </nav>
     </header>
     <%= yield %>
   </body>

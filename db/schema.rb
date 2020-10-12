@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_10_052002) do
+ActiveRecord::Schema.define(version: 2020_10_10_230032) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -50,9 +50,9 @@ ActiveRecord::Schema.define(version: 2020_10_10_052002) do
     t.integer "genre_id"
     t.string "name"
     t.text "introduction"
-    t.string "recipe_image"
-    t.integer "cost"
-    t.integer "time"
+    t.string "recipe_image_id"
+    t.string "cost"
+    t.string "time"
     t.text "material"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2020_10_10_052002) do
 
   create_table "steps", force: :cascade do |t|
     t.integer "recipe_id"
-    t.string "step_image"
+    t.string "step_image_id"
     t.text "description"
     t.integer "step_order"
     t.datetime "created_at", null: false
