@@ -75,3 +75,8 @@ gem 'font-awesome-sass'
 gem 'rubocop', require: false
 gem 'rubocop-rails', require: false
 gem 'rubocop-performance', require: false
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
