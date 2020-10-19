@@ -23,10 +23,15 @@ Rails.application.routes.draw do
   get 'home/about' => 'home#about'
   get 'users/unsubscribe' => 'users#unsubscribe'
   get 'users/withdrawn' => 'users#withdrawn'
-  resources :comments, only:[:index, :create, :destroy]
-  resources :favorites, only:[:index, :create, :destroy]
+  
+  resources :favorites, only:[:index]
   resources :steps, only:[:index, :create]
-  resources :recipes, only:[:index, :create, :new, :show, :edit, :update, :destroy]
-  resources :users, only:[:show, :edit, :update, :destroy]
+  resources :recipes, only:[:index, :create, :new, :show, :edit, :update, :destroy] do
+    resource :favorites, only: [:create, :destroy]
+    resources :comments, only:[:index, :create, :destroy]
+  end
+  resources :users, only:[:show, :edit, :update, :destroy] do
+    get :favorites, on: :collection
+  end
 
 end

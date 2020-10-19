@@ -1,2 +1,23 @@
-<h1>Home#top</h1>
-<p>Find me in app/views/home/top.html.erb</p>
+<p>ジャンル一覧</p>
+
+<% @genres.each do |genre| %>
+
+<%= genre.name %>
+
+<%end%>
+
+<p>新規レシピ</p>
+
+
+<% @recipes.each do |recipe| %>
+
+<%= link_to recipe_path(recipe) do %>
+<%= attachment_image_tag recipe, :recipe_image,:size =>'200x200'  %>
+<% end %>
+
+<%= attachment_image_tag recipe.user, :profile_image, fallback: "no-image.png", :size =>'50x50' %>
+
+<%= recipe.user.name %>
+<%= recipe.name %>
+
+<% end %>
