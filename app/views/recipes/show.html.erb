@@ -1,6 +1,4 @@
-<h1>Recipes#show</h1>
-<p>Find me in app/views/recipes/show.html.erb</p>
-
+<h2>レシピ詳細</h2>
 <%= attachment_image_tag @recipe, :recipe_image %>
 
 <%= @recipe.name %>
@@ -13,6 +11,23 @@
 
 <%= @recipe.material %>
 
+<%= render 'recipes/favoriteform', recipe: @recipe%>
+        
 <% if @recipe.user.id == current_user.id %>
   <%= link_to "編集", edit_recipe_path(@recipe) %>
 <% end %>
+
+<%= form_for [@recipe, @comment] do |f| %>
+<%= f.text_area :comment_content %>
+<%= f.submit "コメントする" %>
+<% end %>
+
+<tbody>
+  <% @comments.each do |comment| %>
+    <tr>
+      <td><%= comment.user.name %></td>
+      <td><%= comment.comment_content %></td>
+      <td><%= link_to "削除", recipe_comment_path(@recipe, comment), method: :delete %></td>
+    </tr>
+  <% end %>
+</tbody>

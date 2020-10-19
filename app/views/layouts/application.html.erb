@@ -12,56 +12,81 @@
 
   <body>
     <header>
-      <nav class="navbar navbar-default ">
-        <div class="container-fluid">
-          <div class="navbar-header navbar-left">
-            <button type="button" class="navbar-toggle collapsed"data-toggle="collapse"data-target="#navbarEexample8">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand">
-              <% if admin_signed_in? %>
-                <%= link_to image_tag("made by me logo1.png"),admins_root_path %>
-              <% else %>
-                <%= link_to image_tag("made by me logo1.png"),root_path %>
-              <% end %>
-            </a>
-          </div>
 
-          <div class="collapse navbar-collapse" id="navbarEexample7">
-
-            <ul class="nav navbar-nav" style="margin: auto; background-color: transparent;">
-
-            <!-- ユーザーがログインしている -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand">
+          <% if admin_signed_in? %>
+            <%= link_to image_tag("made by me logo1.png"),admins_root_path %>
+          <% else %>
+            <%= link_to image_tag("made by me logo1.png"),root_path %>
+          <% end %>
+        
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
             <% if user_signed_in? %>
-
-              <li><%= link_to " マイページ", user_path(current_user) %></li>
-              <li><%= link_to " お気に入り", favorites_path %></li>
-              <li><%= link_to " レシピ一覧", recipes_path %></li>
-              <li><%= link_to " ログアウト", destroy_user_session_path, method: :delete %></li>
-              <li><%= link_to " レシピを投稿する", new_recipe_path %></li>
-              <p class="navbar-text navbar-right">ようこそ<%= current_user.name %>さん</p>
-
-            <!-- 管理者がログインしている -->
-            <% elsif admin_signed_in? %>
-              <li><%= link_to " ジャンル一覧", admins_genres_path %></li>
-              <li><%= link_to " 会員一覧", admins_users_path %></li>
-              <li><%= link_to " レシピ一覧", admins_recipes_path %></li>
-              <li><%= link_to " ログアウト", destroy_admin_session_path, method: :delete %></li>
- 
-            <!-- どちらもログインしていない -->
-            <% else %>
-              <li><%= link_to " About", home_about_path %></li>
-              <li><%= link_to " ユーザー登録", new_user_registration_path %></li>
-              <li><%= link_to " ログイン", new_user_session_path %></li>
-              <li><%= link_to " かんたんログイン" %></li><!-- 機能実装後パス追加 -->
-              <li><%= link_to " レシピを投稿する", new_recipe_path %></li>
-            <% end %>
+            
+            <ul class="navbar-nav">
+              <li class="nav-item ">
+                <%= link_to(" マイページ ", user_path(current_user),{class: "btn btn-radius-solid"}) %>
+              </li>
+              <li class="nav-item">
+                <%= link_to( " お気に入り ", favorites_path,{class: "btn btn-radius-solid"}) %>
+              </li>
+              <li class="nav-item">
+                <%= link_to( " レシピ一覧" , recipes_path,{class: "btn btn-radius-solid"}) %>
+              </li>
+              <li class="nav-item">
+                <%= link_to( " ログアウト" , destroy_user_session_path,{class: "btn btn-radius-solid", method: :delete}) %>
+              </li>
+              <li class="nav-item">
+                <%= link_to(" レシピを投稿する ", new_recipe_path,{class: "btn btn--orange btn--cubic btn--shadow"}) %>
+              </li>
             </ul>
+
+            <% elsif admin_signed_in? %>
+            <ul class="navbar-nav">
+              <li class="nav-item active">
+                <%= link_to(" ジャンル一覧", admins_genres_path,{class: "btn btn-radius-solid"}) %>
+              </li>
+              <li class="nav-item">
+                <%= link_to(" 会員一覧", admins_users_path,{class: "btn btn-radius-solid"}) %>
+              </li>
+              <li class="nav-item">
+                <%= link_to(" レシピ一覧", admins_recipes_path,{class: "btn btn-radius-solid"}) %>
+              </li>
+              <li class="nav-item">
+                <%= link_to(" ログアウト", destroy_admin_session_path,{class: "btn btn-radius-solid", method: :delete}) %>
+              </li>
+            </ul>
+
+            <% else %>
+            <ul class="navbar-nav">
+              <li class="nav-item ">
+                <%= link_to(" About", home_about_path,{class: "btn btn-radius-solid"}) %>
+              </li>
+              <li class="nav-item">
+                <%= link_to(" ユーザー登録", new_user_registration_path,{class: "btn btn-radius-solid"}) %>
+              </li>
+              <li class="nav-item">
+                <%= link_to(" ログイン", new_user_session_path,{class: "btn btn-radius-solid"}) %>
+              </li>
+              <li class="nav-item">
+                <%= link_to(" かんたんログイン",new_user_session_path,{class: "btn btn-radius-solid"}) %>
+              </li>
+              <li class="nav-item">
+                <%= link_to(" レシピを投稿する", new_recipe_path,{class: "btn btn--orange btn--cubic btn--shadow"}) %>
+              </li>
+            </ul>
+            <% end %>
           </div>
-        </div>
+
+          <%= search_form_for @search, url: recipes_path do |f| %>
+          <%= f.text_field :name_cont ,placeholder: 'キーワードを入力...' %>
+          <i class="fas fa-search"><%= f.submit "検索" %></i>
+          <% end %>
+
       </nav>
     </header>
     <%= yield %>
