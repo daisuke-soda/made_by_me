@@ -1,11 +1,16 @@
 <h1>レシピ投稿</h1>
-<%= form_for @recipe do |f| %>
+<%= form_for(@recipe, url:recipes_path) do |f| %>
 
   <%= f.label :"レシピタイトル" %>
   <%= f.text_field :name %>
 
   <%= f.label :"トップ画像" %>
-  <%= f.attachment_field :recipe_image %>
+  <div class="image_field">
+    <%= attachment_image_tag @recipe, :recipe_image, id: "img_prev", fallback: "no-image.png", class: "recipe_image", size:"300x240" %>
+    <%= f.attachment_field :recipe_image %>
+  </div>
+
+
 
   <%= f.label :"レシピの説明" %>
   <%= f.text_area :introduction %>

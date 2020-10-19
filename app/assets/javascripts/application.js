@@ -17,3 +17,19 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(document).on("turbolinks:load", function(){
+	// /recipes#new,editでの画像プレビュー
+	function readURL(input) {
+		if(input.files && input.files[0]){
+			var reader = new FileReader();
+			reader.onload = function (e) {
+				$('#img_prev').attr('src', e.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+	$("#recipe_recipe_image").change(function(){
+		readURL(this);
+  });
+});
