@@ -1,0 +1,12 @@
+<div class="nested-fields well well-compact">
+  <p>ステップ1<%= f.object.step_order %></p>
+  <div class="form-group">
+    <%= attachment_image_tag f.object, :step_image, id: "img_prev", fallback: "no-image.png", class: "step_image", size:"300x240" %>
+    <dd><%= f.attachment_field :step_image %></dd>
+
+    <dt><%= f.label :"説明" %></dt>
+    <dd><%= f.text_area :description %></dd>
+
+    <%= link_to_remove_association "ステップを取り消す", f %>
+　</div>
+</div>

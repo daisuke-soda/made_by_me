@@ -1,0 +1,10 @@
+<div class="panel" style="margin-top: 50px;">
+  <div class="panel-heading">
+    <p class="panel-title"><i class="far fa-sticky-note"> ジャンル</i></p>
+  </div>
+    <% genres.each do |genre| %>
+      <div class="panel-body">
+        <%= link_to genre.name, recipes_path(genre_id: genre.id) %>
+      </div>
+    <%end%>
+</div>

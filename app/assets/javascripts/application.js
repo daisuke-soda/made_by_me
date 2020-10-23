@@ -16,6 +16,7 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+//= require cocoon
 //= require_tree .
 
 $(document).on("turbolinks:load", function(){
@@ -31,5 +32,38 @@ $(document).on("turbolinks:load", function(){
 	}
 	$("#recipe_recipe_image").change(function(){
 		readURL(this);
+	});
+
+	// ステップナンバー追加
+	var button = document.querySelector('.add_fields')
+		 button.addEventListener('click', function() {
+			 setTimeout(
+				 function() {
+					const elements = document.querySelectorAll('.nested-fields');
+					const targetElement = elements[elements.length - 1];
+					targetElement.firstElementChild.innerText = 'ステップ' + `${elements.length}`
+					console.log('aaa')
+				 },
+				 '50'
+			 );
+		 });
+	
+		 
+});
+
+$(document).on("turbolinks:load", function(){
+	// /recipes#new,editでの画像プレビュー
+	function readURL(input) {
+		if(input.files && input.files[0]){
+			var reader = new FileReader();
+			reader.onload = function (e) {
+				$('#img_item').attr('src', e.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+	$("#step_step_image").change(function(){
+		readURL(this);
   });
 });
+

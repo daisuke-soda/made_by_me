@@ -1,23 +1,29 @@
 class RecipesController < ApplicationController
   def index
     @recipes = Recipe.all
+    @genres = Genre.all
   end
 
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.user_id = current_user.id
-    @recipe.save
+    @recipe.save!
+    params[:recipe][:steps_attributes].permit!.to_h.each.with_index(1) do |s,index|
+    @recipe.steps.create!(description: s[1]["description"],step_image: s[1]["step_image"],step_order: index )
+    end
     redirect_to recipe_path(@recipe)
   end
 
   def new
     @recipe = Recipe.new
+    @steps = @recipe.steps.build
   end
 
   def show
     @recipe = Recipe.find(params[:id])
     @comment = Comment.new
     @comments = @recipe.comments
+    @steps = @recipe.steps
   end
 
   def edit

@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get 'home/about' => 'home#about'
   get 'users/unsubscribe' => 'users#unsubscribe'
   get 'users/withdrawn' => 'users#withdrawn'
+  post '/guests/guest_sign_in', to: 'guests#new_guest'
   
   resources :favorites, only:[:index]
   resources :steps, only:[:index, :create]
