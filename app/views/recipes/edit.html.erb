@@ -1,25 +1,64 @@
-<%= form_for @recipe do |f| %>
+<div class="container">
+  <div class="row">
+    <div class = "col-9">
+      <h1>レシピ投稿</h1>
+    </div>
+        <%= form_for(@recipe, url:recipe_path) do |f| %>
 
-  <%= f.label :"レシピタイトル" %>
-  <%= f.text_field :name %>
+      <div class="form-group">
+        <dt><%= f.label :"レシピタイトル" %></dt>
+        <dd><%= f.text_field :name %></dd>
+      </div>
 
-  <%= f.label :"トップ画像" %>
-  <%= f.attachment_field :recipe_image %>
+      <div class="image_field">
+        <dt><%= f.label :"トップ画像" %></dt>
+        <%= attachment_image_tag @recipe, :recipe_image, id: "img_prev", fallback: "no-image.png", class: "recipe_image", size:"300x240" %>
+        <dd><%= f.attachment_field :recipe_image %></dd>
+      </div>
 
-  <%= f.label :"レシピの説明" %>
-  <%= f.text_area :introduction %>
+      <div class="form-group">
+        <dt><%= f.label :"レシピの説明" %></dt>
+        <dd><%= f.text_area :introduction %></dd>
+      </div>
 
-  <%= f.label :"かかった費用" %>
-  <%= f.text_field :cost %>
+      <div class="form-group">
+        <dt><%= f.label "ジャンル　" %></dt>
+        <dd><%= f.collection_select :genre_id, Genre.all, :id, :name %></dd>
+      </div>
 
-  <%= f.label :"所要時間" %>
-  <%= f.text_field :time %>
+      <div class="form-group">
+        <dt><%= f.label :"かかった費用" %></dt>
+        <dd><%= f.text_field :cost %></dd>
+      </div>
 
-  <%= f.label :"材料・工具" %>
-  <%= f.text_field :material %>
+      <div class="form-group">
+        <dt><%= f.label :"所要時間" %></dt>
+        <dd><%= f.text_field :time %></dd>
+      </div>
 
-  <%= f.submit %>
+      <div class="form-group">
+        <dt><%= f.label :"材料・工具" %></dt>
+        <dd><%= f.text_area :material %></dd>
+      </div>
 
-  <%= link_to "削除",recipe_path(@recipe), method: :delete, data: {confirm: "本当に削除しますか？"} %>
+        <!-- ステップ入力 -->
+        <dt>製作ステップ</dt>
+        <div class="items">
+          <% @recipe.steps.each.with_index do |s,index| %>
+              # here you have both the 'question' object and the current 'index'
+          <%= f.fields_for :steps do |step| %>
+            <%= render 'step_fields', f: step,s:s %>
+          <% end %>
+          <div class="links">
+            <%= link_to_add_association 'ステップを追加する',f, :steps %>
+          </div>
+            <%= f.submit '更新', class: "btn btn-primary btn-md" %>
+        <% end %>
+        <% end %>
+        </div>
+      <div>
+        <%= link_to "削除",recipe_path(@recipe), method: :delete, data: {confirm: "本当に削除しますか？"} %>
+      </div>
+  </div>
+</div>
 
-<% end %>

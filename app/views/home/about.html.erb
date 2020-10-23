@@ -1,3 +1,33 @@
-<h2>Made by me とは</h2>
+<div class="container">
+  <div class="mx-auto">
+    <div class="headline" style="text-align: center;">
+      <span class="str">
+        <h3>Made by me とは</h3>
+      </span>
+    </div>
 
-<p>DIYのレシピ投稿サイトです</p>
+
+    <div class="row">
+      <div class="col-12">
+        <div class="row">
+          <%= image_tag 'painting.jpg', :width => '50%' %>
+          <div class="col-6">
+            <span class="about_title">
+              Made by me はレシピ投稿型のDIYコミュニティサイトです<br><br>
+            </span>
+            <span class="about_text">
+              家具の製作や壁の改修などオリジナルのDIYレシピを<br>
+              みんなとシェアしよう！<br><br><br>
+              ユーザー登録するとレシピの投稿、お気に入り、コメントなどの機能が利用できるようになります。<br><br><br>
+              ユーザー登録して充実したDIYライフを送ろう！！<br><br>
+              <%= link_to(" ユーザー登録する", new_user_registration_path,{class: "btn btn-radius-solid"}) %><br><br>
+              登録済みの方は、こちらから<%= link_to(" ログイン", new_user_session_path) %>してください。
+            </span>
+          </div>
+        </div>
+      </div> 
+    </div>
+
+
+  </div>
+</div>

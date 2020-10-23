@@ -73,10 +73,10 @@
                 <%= link_to(" ログイン", new_user_session_path,{class: "btn btn-radius-solid"}) %>
               </li>
               <li class="nav-item">
-                <%= link_to(" かんたんログイン",new_user_session_path,{class: "btn btn-radius-solid"}) %>
+                <%= link_to(" ゲストログイン（閲覧用）", guests_guest_sign_in_path, {class: "btn btn-radius-solid", method: :post}) %>
               </li>
               <li class="nav-item">
-                <%= link_to(" レシピを投稿する", new_recipe_path,{class: "btn btn--orange btn--cubic btn--shadow"}) %>
+                <%= link_to(" レシピを投稿する", new_user_session_path,{class: "btn btn--orange btn--cubic btn--shadow"}) %>
               </li>
             </ul>
             <% end %>

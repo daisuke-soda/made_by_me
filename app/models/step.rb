@@ -1,6 +1,8 @@
 class Step < ApplicationRecord
   belongs_to :recipe
 
+  attachment :step_image
+
   validates :description, presence: true
-  validates :step_order, presence: true
+
 end

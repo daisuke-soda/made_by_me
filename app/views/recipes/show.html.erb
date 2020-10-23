@@ -1,28 +1,51 @@
-<h2>レシピ詳細</h2>
-<%= attachment_image_tag @recipe, :recipe_image %>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h3><%= @recipe.name %></h3>
+    </div>
 
-<%= @recipe.name %>
+    <div class="img_field">
+      <%= attachment_image_tag @recipe, :recipe_image,:size =>'300x300' %>
+    </div>
 
-<%= @recipe.introduction %>
+    <ul>
 
-<%= @recipe.cost %>
+      <li><%= @recipe.introduction %></li>
 
-<%= @recipe.time %>
+      <li><%= @recipe.cost %></li> 
 
-<%= @recipe.material %>
+      <li><%= @recipe.time %></li>
 
-<%= render 'recipes/favoriteform', recipe: @recipe%>
-        
-<% if @recipe.user.id == current_user.id %>
-  <%= link_to "編集", edit_recipe_path(@recipe) %>
-<% end %>
+      <li><%= @recipe.material %></li>
 
-<%= form_for [@recipe, @comment] do |f| %>
-<%= f.text_area :comment_content %>
-<%= f.submit "コメントする" %>
-<% end %>
+      <% @steps.each do |step| %>
 
-<tbody>
+      <div class="img_field">
+        <%= attachment_image_tag step, :step_image,:size =>'200x200' %>
+      </div>
+        <%= step.description %>
+        <%= step.step_order %>
+
+    <% end %>
+
+    <% if user_signed_in? %>
+      <li><%= render 'recipes/favoriteform', recipe: @recipe%>
+                  
+      <li><%= form_for [@recipe, @comment] do |f| %>
+          <%= f.text_area :comment_content %>
+          <%= f.submit "コメントする" %>
+          <% end %>
+      </li>
+   
+
+      <li><% if @recipe.user.id == current_user.id %>
+        <%= link_to "編集", edit_recipe_path(@recipe) %>
+      <% end %>
+      </li>
+    </ul>
+    
+    <% end %>
+
   <% @comments.each do |comment| %>
     <tr>
       <td><%= comment.user.name %></td>
@@ -31,3 +54,7 @@
     </tr>
   <% end %>
 </tbody>
+
+
+  </div>
+</div>
