@@ -1,19 +1,38 @@
 <div class="container">
   <div class="row">
-    <h2>お気に入り一覧</h2>
-  </div>
-        
-        <% @favorites.each do |favorite| %>
+    <div class="col-2">
+      <div class="sidebar_content">
+        <%= render 'layouts/genre_search', genres: @genres %>
+     </div>
+    </div>
 
-          <%= link_to recipe_path(favorite.recipe.id) do %>
-          <%= attachment_image_tag favorite.recipe, :recipe_image, :size =>'200x200' %>
+    <div class="col-10">
+      <span class="str">
+        <h3>お気に入り</h3>
+      </span>
+      <div class="row">
+          <% @favorites.each do |favorite| %>
+          <div class="col-md-4">
+            <div class="card">
+            <%= link_to recipe_path(favorite.recipe.id) do %>
+            <%= attachment_image_tag favorite.recipe, :recipe_image, :size =>'250x200' %>
+            <% end %>
+              <div class="card-body">
+                <h5 class="card-title">
+                  <%= favorite.recipe.name %>
+                </h5>
+                <p class="card-text">
+                  <%= favorite.recipe.introduction %><br>
+                  <%= attachment_image_tag favorite.recipe.user, :profile_image, fallback: "no-image.png", :size =>'40x40' %>
+                  <%= favorite.recipe.user.name %><br>
+                  <%= favorite.recipe.updated_at.strftime("%Y-%m-%d") %>
+                </p>
+              </div>
+            </div>
+          </div>
           <% end %>
-          <%= attachment_image_tag favorite.recipe.user, :profile_image, fallback: "no-image.png", :size =>'100x100' %>
-          <%= favorite.recipe.user.name %>
-          <%= favorite.recipe.name %>
-
-　　    <% end %>
-
-
-
+        </div>
+      <%= paginate @favorites %>
+    </div>
+  </div>
 </div>

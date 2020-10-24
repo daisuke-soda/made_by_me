@@ -4,6 +4,9 @@ class FavoritesController < ApplicationController
 
   def index
     @favorites = Favorite.where(user_id: current_user.id)
+    @favorites = Favorite.page(params[:page]).per(3)
+    @genres = Genre.all
+    
   end
 
   def create
