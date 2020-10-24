@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
   def index
-    @recipes = Recipe.all
+    @search_recipes = Recipe.page(params[:page]).per(3)
     @genres = Genre.all
   end
 
@@ -17,6 +17,7 @@ class RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
     @steps = @recipe.steps.build
+    @genres = Genre.all
   end
 
   def show
@@ -24,10 +25,12 @@ class RecipesController < ApplicationController
     @comment = Comment.new
     @comments = @recipe.comments
     @steps = @recipe.steps
+    @genres = Genre.all
   end
 
   def edit
     @recipe = Recipe.find(params[:id])
+    @genres = Genre.all
   end
 
   def update
@@ -44,7 +47,7 @@ class RecipesController < ApplicationController
 
   private
   def recipe_params
-    params.require(:recipe).permit(:name, :recipe_image, :introduction, :cost, :time, :material)
+    params.require(:recipe).permit(:name, :recipe_image, :introduction, :cost, :time, :material, steps_attributes: [:id, :recipe_id, :step_image, :description, :step_order, :_destroy])
   end
 
 end

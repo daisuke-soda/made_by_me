@@ -14,9 +14,9 @@
       <div class="row">
           <% @recipes.each do |recipe| %>
           <div class="col-md-4">
-          <div class="card" style="width: 200px;">
+          <div class="card">
             <%= link_to recipe_path(recipe) do %>
-            <%= attachment_image_tag recipe, :recipe_image,:size =>'200x200'  %>
+            <%= attachment_image_tag recipe, :recipe_image,:size =>'250x200'  %>
             <% end %>
 
             
@@ -26,15 +26,16 @@
               </h5>
               <p class="card-text">
                 <%= recipe.introduction %><br>
-                <%= attachment_image_tag recipe.user, :profile_image, fallback: "no-image.png", :size =>'50x50' %>
-                <%= recipe.user.name %>
+                <%= attachment_image_tag recipe.user, :profile_image, fallback: "no-image.png", :size =>'40x40' %>
+                <%= recipe.user.name %><br>
+                <%= recipe.updated_at.strftime("%Y-%m-%d") %>
               </p>
             </div>
           </div>
         </div>
             <% end %>
-
       </div>
+       <%= paginate @recipes %>
     </div>
   </div>
 </div>

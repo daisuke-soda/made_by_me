@@ -25,24 +25,34 @@ $(document).on("turbolinks:load", function(){
 		if(input.files && input.files[0]){
 			var reader = new FileReader();
 			reader.onload = function (e) {
-				$('#img_prev').attr('src', e.target.result);
+				$(input).parent().prev().attr('src', e.target.result);
 			}
 			reader.readAsDataURL(input.files[0]);
 		}
 	}
-	$("#recipe_recipe_image").change(function(){
+	$(".image_input").on("change", function(){
 		readURL(this);
-	});
+	})
 
 	// ステップナンバー追加
 	var button = document.querySelector('.add_fields')
+	 
 		 button.addEventListener('click', function() {
 			 setTimeout(
 				 function() {
 					const elements = document.querySelectorAll('.nested-fields');
 					const targetElement = elements[elements.length - 1];
+					const inputElement = targetElement.children[1].children[1].children[1];
+					const imageElement = targetElement.children[1].children[0];
+					imageElement.id = 'img_prev_step' + `${elements.length}`;
+					inputElement.id = 'input_image_step' + `${elements.length}`;
+
+					$(".image_input").on("change", function(){
+						readURL(this);
+					})
+					console.log(inputElement)
 					targetElement.firstElementChild.innerText = 'ステップ' + `${elements.length}`
-					console.log('aaa')
+
 				 },
 				 '50'
 			 );
@@ -51,19 +61,20 @@ $(document).on("turbolinks:load", function(){
 		 
 });
 
+
 $(document).on("turbolinks:load", function(){
 	// /recipes#new,editでの画像プレビュー
 	function readURL(input) {
 		if(input.files && input.files[0]){
 			var reader = new FileReader();
 			reader.onload = function (e) {
-				$('#img_item').attr('src', e.target.result);
+				$().attr('src', e.target.result);
 			}
 			reader.readAsDataURL(input.files[0]);
 		}
 	}
-	$("#step_step_image").change(function(){
+	$("#recipe_recipe_image").change(function(){
 		readURL(this);
-  });
-});
+	});
 
+	});

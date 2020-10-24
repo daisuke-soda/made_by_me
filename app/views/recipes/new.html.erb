@@ -1,59 +1,72 @@
 <div class="container">
   <div class="row">
-    <div class = "col-9">
-      <h1>レシピ投稿</h1>
+
+    <div class="col-2">
+      <div class="sidebar_content">
+        <%= render 'layouts/genre_search', genres: @genres %>
+     </div>
     </div>
+
+    <div class = "col-10">
+      <span class="str">
+        <h3>レシピ投稿</h3>
+      </span>
+
         <%= form_for(@recipe, url:recipes_path) do |f| %>
 
-      <div class="form-group">
-        <dt><%= f.label :"レシピタイトル" %></dt>
-        <dd><%= f.text_field :name %></dd>
-      </div>
-
-      <div class="image_field">
-        <dt><%= f.label :"トップ画像" %></dt>
-        <%= attachment_image_tag @recipe, :recipe_image, id: "img_prev", fallback: "no-image.png", class: "recipe_image", size:"300x240" %>
-        <dd><%= f.attachment_field :recipe_image %></dd>
-      </div>
-
-      <div class="form-group">
-        <dt><%= f.label :"レシピの説明" %></dt>
-        <dd><%= f.text_area :introduction %></dd>
-      </div>
-
-      <div class="form-group">
-        <dt><%= f.label "ジャンル　" %></dt>
-        <dd><%= f.collection_select :genre_id, Genre.all, :id, :name %></dd>
-      </div>
-
-      <div class="form-group">
-        <dt><%= f.label :"かかった費用" %></dt>
-        <dd><%= f.text_field :cost %></dd>
-      </div>
-
-      <div class="form-group">
-        <dt><%= f.label :"所要時間" %></dt>
-        <dd><%= f.text_field :time %></dd>
-      </div>
-
-      <div class="form-group">
-        <dt><%= f.label :"材料・工具" %></dt>
-        <dd><%= f.text_area :material %></dd>
-      </div>
-
-        <!-- ステップ入力 -->
-        <dt>製作ステップ</dt>
-        <div class="items">
-          
-          <%= f.fields_for :steps do |step| %>
-            <%= render 'step_fields', f: step %>
-          <% end %>
-          <div class="links">
-            <%= link_to_add_association 'ステップを追加する',f, :steps %>
+          <div class="form-group">
+            <dt><%= f.label :"レシピタイトル" %></dt>
+            <dd><%= f.text_field :name, size: "80x10" %></dd>
           </div>
+
+          <div class="image_field">
+            <dt><%= f.label :"トップ画像" %></dt>
+            <%= attachment_image_tag @recipe, :recipe_image, id: "img_prev", fallback: "no-image.png", class: "recipe_image", size:"566x350" %>
+            <dd><%= f.attachment_field :recipe_image, class: "image_input" %></dd>
+          </div>
+
+          <div class="form-group">
+            <dt><%= f.label :"レシピの説明" %></dt>
+            <dd><%= f.text_area :introduction, size: "80x10" %></dd>
+          </div>
+
+          <div class="form-group">
+            <dt><%= f.label "ジャンル　" %></dt>
+            <dd><%= f.collection_select :genre_id, Genre.all, :id, :name %></dd>
+          </div>
+
+          <div class="form-group">
+            <dt><%= f.label :"かかった費用" %></dt>
+            <dd><%= f.text_field :cost %></dd>
+          </div>
+
+          <div class="form-group">
+            <dt><%= f.label :"所要時間" %></dt>
+            <dd><%= f.text_field :time %></dd>
+          </div>
+
+          <div class="form-group">
+            <dt><%= f.label :"材料・工具" %></dt>
+            <dd><%= f.text_area :material, size: "80x5" %></dd>
+          </div>
+
+            <!-- ステップ入力 -->
+            <dt>製作ステップ</dt>
+            <div class="items">
+          
+              <%= f.fields_for :steps do |step| %>
+                <%= render 'step_fields', f: step %>
+              <% end %>
+              <div class="links">
+                <div class ="btn btn-radius-solid">
+                  <%= link_to_add_association 'ステップを追加する',f, :steps %>
+                </div>
+              </div>
+            </div>
             <%= f.submit '投稿', class: "btn btn-primary btn-md" %>
         <% end %>
-        </div>
 
+
+    </div>
   </div>
 </div>

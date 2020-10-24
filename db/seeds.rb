@@ -10,3 +10,31 @@ Admin.create!(
   email: 'made@com',
   password: 'madebyme'
   )
+Genre.create!(
+  [
+    {
+      name: "壁・床",
+    },
+    {
+      name: "ドア・窓",
+    },
+    {
+      name: "キッチン",
+    },
+    {
+      name: "バス・トイレ",
+    },
+    {
+      name: "家具・照明",
+    },
+    {
+      name: "庭・エクステリア",
+    },
+    {
+      name: "雑貨・小物",
+    },
+    {
+      name: "その他",
+    }
+  ]
+  )

@@ -6,8 +6,7 @@
         </span>
       </div>
 
-
-      <div class="table-responsive">
+    <div class="col-12">
         <table class="table table-condensed">
 
           <thead>
@@ -15,33 +14,35 @@
               <th>ユーザー情報</th>
             </tr>
           </thead>
+          
           <tbody>
-            <div class="row">
-              <tr><td>
+              <tr>
+                <td>
                 <%= attachment_image_tag @user, :profile_image, fallback: "no-image.png", :size =>'100x100' %>
                 <%= @user.name %>
                 <%= link_to "編集する", edit_user_path(@user) %>
-              </td></tr>
+                </td>
+              </tr>
 
               <tr><td>投稿済みレシピ<br>
-                <div class="col-xs-4">
-                <% @recipes.each do |recipe| %>
+                <div class="row">
+                  <% @recipes.each do |recipe| %>
+                  <div class="col-md-4">
 
-                  <%= link_to recipe_path(recipe) do %>
-                  <%= attachment_image_tag recipe, :recipe_image, :size =>'200x200' %><br>
-                  <% end %>
+                    <%= link_to recipe_path(recipe) do %>
+                    <%= attachment_image_tag recipe, :recipe_image, :size =>'200x200' %><br>
+                    <% end %>
 
-                  レシピ名：<%= recipe.name %><br>
-                  作成日：<%= recipe.updated_at.strftime("%Y-%m-%d %H:%M") %><br>
-            
+                    レシピ名：<%= recipe.name %><br>
+                    作成日：<%= recipe.updated_at.strftime("%Y-%m-%d %H:%M") %><br>
               
+                  </div>
                   <% end %>
-
                 </div>
               </td></tr>
-            </div> 
           </tbody>
         </table>
-      </div>
+        <%= paginate @recipes %>
+    </div>
   </div>
 </div>

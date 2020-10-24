@@ -42,4 +42,4 @@ https://docs.google.com/spreadsheets/d/1WAnpi1uCh2AO7If5Z9gd8fyW9XAfGKFeTVHEfGWN
 - 仮想環境：Vagrant,VirtualBox
 
 ## 使用素材
-※順次追加する予定です
+O-DAN(フリーフォト)
