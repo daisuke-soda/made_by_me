@@ -173,6 +173,35 @@ h2:before {
   font-size     : 14px;              /* タイトルの文字サイズ    */
 }
 
+.genre_field {
+  position      : relative;            /* タイトル用に親要素定義  */
+  box-sizing    : border-box;          /* 罫線・余白も含む大きさ  */
+  margin-top    : 40px;                /* BOXの位置               */
+  max-width     : 140px;               /* BOXの最大横幅           */
+  background    : #fff;                /* BOXの背景色             */
+  padding       : 7px 3px 7px 5px; /* BOX内の余白             */
+  border        : 2px solid #660000;   /* BOXの枠線               */
+}
+ 
+ /* --- タイトル部分の定義 ----------------------------------------*/
+.genre_field::before {
+  position      : absolute;          /* 親からの相対位置の定義  */
+  display       : inline-block;      /* インラインボックス定義  */
+  box-sizing    : border-box;        /* 罫線・余白も含む大きさ  */
+  line-height   : 1;                 /* 1行の高さを初期化       */
+  background    : #ffffff;           /* タイトル背景色          */
+  border        : 2px solid #660000; /* タイトルのの枠線        */
+  color         : #660000;           /* タイトルの文字色        */
+  content       : attr(title);       /* タイトルに[title]を表示 */
+  font-weight   : bold;              /* タイトルは太字          */
+  padding       : 8px 8px;          /* タイトル内の余白        */
+  top           : -34px;             /* 枠線分上を指定          */
+  left          : -2px;              /* 枠線分左を指定          */
+  border-radius : 5px 5px 0 0;     /* タイトルの角丸          */
+  font-size     : 14px;              /* タイトルの文字サイズ    */
+}
+
+
 .cost_field {
   position      : relative;            /* タイトル用に親要素定義  */
   box-sizing    : border-box;          /* 罫線・余白も含む大きさ  */
