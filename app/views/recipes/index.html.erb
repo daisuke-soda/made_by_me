@@ -9,8 +9,13 @@
   
       <div class ="col-10">
         <span class="str">
-          <h3>レシピ一覧</h3>
+          <% if params[:genre_id] %>
+		      	<h3><%= @genre.name %>のレシピ一覧</h3>
+	      	<% else %>
+	      		<h3>レシピ一覧</h3>
+          <% end %>
         </span>
+ 
           <div class="row">
             <% @search_recipes.each do |recipe| %>
             <div class="col-md-4">

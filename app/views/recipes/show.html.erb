@@ -20,6 +20,10 @@
           <%= @recipe.introduction %>
         </div>
 
+        <div class="genre_field" title="ジャンル">
+          <%= @recipe.genre.name %>
+        </div>
+
         <div class="cost_field" title="かかった費用">
           <%= @recipe.cost %>
         </div>
@@ -68,6 +72,12 @@
                         <% end %>
                       
                         <% end %>
+
+
+                        <% @recipe.tag_list.each do |tag| %>
+                        <%= tag %>
+                    <% end %>
+
 
                 </thead>
               </table>

@@ -1,7 +1,20 @@
 class RecipesController < ApplicationController
+  
   def index
-    @search_recipes = Recipe.page(params[:page]).per(3)
+    @recipes = Recipe.all
     @genres = Genre.all
+    if params[:genre_id]
+    @genre = Genre.find(params[:genre_id])
+    @recipes = @genre.recipes
+    @search_recipes = @genre.recipes.page(params[:page]).per(3)
+    else
+    @recipes = Recipe.all
+    end
+    # タグ機能
+    @recipe = Recipe.includes(:user,:tags).all.order('created_at DESC')
+    if params[:tag_name]
+      @recipes = Recipe.tagged_with("#{params[:tag_name]}")
+    end
   end
 
   def create
@@ -36,6 +49,21 @@ class RecipesController < ApplicationController
   def update
     @recipe = Recipe.find(params[:id])
     @recipe.update(recipe_params)
+    params[:recipe][:steps_attributes].permit!.to_h.each.with_index(1) do |s,index|
+
+      if s[1]['_destroy'] == '1'
+        if s[1]['id']
+          @recipe.steps.find(s[1]['id']).destroy
+        end
+      else
+        if s[1]['id']
+          @recipe.steps.find(s[1]['id']).update(description: s[1]["description"],step_image: s[1]["step_image"],step_order: index )
+        else
+          @recipe.steps.create!(description: s[1]["description"],step_image: s[1]["step_image"],step_order: index )
+        end
+      end
+      
+    end
     redirect_to recipe_path(@recipe)
   end
 
@@ -47,7 +75,14 @@ class RecipesController < ApplicationController
 
   private
   def recipe_params
-    params.require(:recipe).permit(:name, :recipe_image, :introduction, :cost, :time, :material, steps_attributes: [:id, :recipe_id, :step_image, :description, :step_order, :_destroy])
+    params.require(:recipe).permit(:genre_id, :name, :recipe_image, :introduction, :cost, :time, :material, :tag_list)
   end
 
+  def step_params_with_order
+    hash = {}
+    recipe_params[:steps_attributes].to_h.each.with_index(1) do |step, i|
+      hash.store(i, step[1])
+    end
+    hash
+  end
 end
