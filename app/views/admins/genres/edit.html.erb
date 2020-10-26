@@ -1,9 +1,29 @@
-<%= form_for(@genre, url:admins_genre_path) do |f| %>
+<div class="container">
+  <div class="row">
+    <div class="mx-auto" style="width: 200px;">
+      <div class="col-12">
+      
+        <span class="str">
+          <h3>ジャンル編集</h3>
+        </span>
+        
 
-<%= f.label "ジャンル" %>
-<%= f.text_area :name %>
+            <div class="form-group">
+              <dt><%= form_for(@genre, url:admins_genre_path) do |f| %></dt>
+            </div>
 
-<%= f.submit %>
-<%= link_to "削除", admins_genre_path(@genre), method: :delete, data: {confirm: "本当に削除しますか？"} %>
+            <div class="form-group">
+              <dt><%= f.label "ジャンル名" %></dt>
+              <dd><%= f.text_area :name %></dd>
+            </div>
 
-<% end %>
+            <div class="form-group">
+              <%= f.submit '更新', class: "btn btn-primary btn-md" %>
+              <%= link_to("削除",admins_genre_path(@genre),{class: "btn btn-danger", method: :delete, data: {confirm: "本当に削除しますか？"}}) %>
+              
+            </div>
+              <% end %>
+      </div>
+    </div>
+  </div>
+</div>

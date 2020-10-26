@@ -10,6 +10,8 @@ Admin.create!(
   email: 'made@com',
   password: 'madebyme'
   )
+
+  
 Genre.create!(
   [
     {
@@ -38,3 +40,14 @@ Genre.create!(
     }
   ]
   )
+  User.create!(
+    [
+    {name: 'naoki', email: 'naoki@com', password: "111111", profile_image: open("./db/seeds_images/icon1.jpg")},
+    {name: 'saki', email: 'saki@com', password: "222222", profile_image: open("./db/seeds_images/icon2.jpg")},
+    {name: 'あかりん', email: 'akarin@com', password: "333333", profile_image: open("./db/seeds_images/icon3.jpg")},
+    {name: 'たく', email: 'taku@com', password: "444444", profile_image: open("./db/seeds_images/icon4.jpg")},
+    {name: 'YOSHI', email: 'yoshi@com', password: "555555", profile_image: open("./db/seeds_images/icon5.jpg")},
+    {name: 'DAIKI', email: 'daiki@com', password: "666666", profile_image: open("./db/seeds_images/icon6.jpg")},
+    {name: 'teru', email: 'teru@com', password: "777777", profile_image: open("./db/seeds_images/icon7.jpg")}
+    ]
+  )  

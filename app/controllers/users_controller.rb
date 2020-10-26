@@ -1,12 +1,17 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, expect: [:index, :show]
+
   def show
     @user = User.find(params[:id])
     @user = current_user
-    @recipes = Recipe.page(params[:page]).per(3)
+    @recipes = Recipe.page(params[:page]).per(9)
   end
 
   def edit
     @user = User.find(params[:id])
+    if @user != current_user
+      redirect_to root_path, alert: '不正なアクセスです'
+    end
   end
 
   def update

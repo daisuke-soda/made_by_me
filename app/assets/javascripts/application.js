@@ -14,10 +14,27 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery3
+//= require jquery
+//= require jquery_ujs
 //= require popper
 //= require bootstrap-sprockets
 //= require cocoon
 //= require_tree .
+
+$(document).ready(function () {
+  $("#theTarget").skippr({
+    transition : 'slide',
+    speed : 1000,
+    easing : 'easeOutQuart',
+    navType : 'block',
+    childrenElementType : 'div',
+    arrows : true,
+    autoPlay : true,
+    autoPlayDuration : 3000,
+    keyboardOnAlways : true,
+    hidePrevious : false
+  });
+});
 
 $(document).on("turbolinks:load", function(){
 	// /recipes#new,editでの画像プレビュー
@@ -62,19 +79,3 @@ $(document).on("turbolinks:load", function(){
 });
 
 
-$(document).on("turbolinks:load", function(){
-	// /recipes#new,editでの画像プレビュー
-	function readURL(input) {
-		if(input.files && input.files[0]){
-			var reader = new FileReader();
-			reader.onload = function (e) {
-				$().attr('src', e.target.result);
-			}
-			reader.readAsDataURL(input.files[0]);
-		}
-	}
-	$("#recipe_recipe_image").change(function(){
-		readURL(this);
-	});
-
-	});
