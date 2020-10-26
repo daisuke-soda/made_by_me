@@ -13,9 +13,10 @@ class RecipesController < ApplicationController
   end
 
   def create
+    @genres = Genre.all
     @recipe = Recipe.new(recipe_params)
     @recipe.user_id = current_user.id
-    if @recipe.save!
+    if @recipe.save
     params[:recipe][:steps_attributes].permit!.to_h.each.with_index(1) do |s,index|
     @recipe.steps.create!(description: s[1]["description"],step_image: s[1]["step_image"],step_order: index )
     end
