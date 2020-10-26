@@ -1,6 +1,6 @@
 class Admins::RecipesController < ApplicationController
   def index
-    @recipes = Recipe.all.page(params[:page]).per(9)
+    @recipes = Recipe.all.page(params[:page]).per(6)
   end
 
   def destroy

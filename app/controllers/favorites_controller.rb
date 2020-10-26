@@ -3,7 +3,7 @@ class FavoritesController < ApplicationController
   before_action :set_recipe, only: [:create, :destroy]
 
   def index
-    @favorites = Favorite.where(user_id: current_user.id).page(params[:page]).per(9)
+    @favorites = Favorite.where(user_id: current_user.id).page(params[:page]).per(6)
     @genres = Genre.all
   end
 

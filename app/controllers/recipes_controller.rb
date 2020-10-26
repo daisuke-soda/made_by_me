@@ -6,7 +6,7 @@ class RecipesController < ApplicationController
     if params[:genre_id]
     @genre = Genre.find(params[:genre_id])
     @recipes = @genre.recipes
-    @search_recipes = @genre.recipes.page(params[:page]).per(9)
+    @search_recipes = @genre.recipes.page(params[:page]).per(6)
     else
     @recipes = Recipe.all
     end
