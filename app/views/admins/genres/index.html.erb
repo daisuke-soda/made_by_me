@@ -1,18 +1,46 @@
-<%= form_for(@genre, url:admins_genres_path) do |f| %>
+<div class="container">
+  <div class="row">
+    <div class="mx-auto" style="width: 200px;">
+      <span class="str">
+        <h3>ジャンル一覧</h3>
+      </span>
+    </div>
 
-<%= f.label "ジャンル名" %>
-<%= f.text_field :name %>
+    <div class="col-12">
+      <table class="table table-condensed">
 
-<%= f.submit %>
+        <thead>
+          <tr>
+            <th>ジャンル情報</th>
+          </tr>
+        </thead>
 
-<% end %>
+          <tbody>
+            <tr>
+              <td>
+                <%= form_for(@genre, url:admins_genres_path) do |f| %>
+                <%= f.label "ジャンル名" %>
+                <%= f.text_field :name %>
+                <%= f.submit " 新規作成" %>
+                <% end %>
+              </td>
+            </tr>
 
-<% @genres.each do |genre| %>
+ 
 
-<%= genre.name %>
+            <tr>
+              <td>
+                <% @genres.each do |genre| %>
+                <%= genre.name %>
+                <%= link_to edit_admins_genre_path(genre) do %>
+                <label class="btn btn-primary btn-sm">編集</label> <br>
+                <% end %>            
+                <% end %>
+              </td>
+            </tr>  
+          </tbody>
 
-<%= link_to edit_admins_genre_path(genre) do %>
-<label class="btn btn-primary btn-md">編集する</label>
-<% end %>
-
-<% end %>
+      </table>
+    </div>
+  </div>
+</div>

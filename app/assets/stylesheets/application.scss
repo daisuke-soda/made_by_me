@@ -17,8 +17,14 @@
 @import "font-awesome";
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700&display=swap');
 
-
-
+// メインビジュアル
+#container{
+  height: 300px;
+  background-image: image-url("image1.jpg");
+  background-size:cover;
+  margin-bottom: 50px;
+}
+// 
 
 h2 {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -95,222 +101,226 @@ h2:before {
   background: linear-gradient(to top, #fdfbfb 0%, #ebedee 100%);
 }
 
+// ページネーション
+.pagination {
+  justify-content: center;
+  margin-top: 40px;
+}
+
 .card {
   width: 250px;
   max-height: 600px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin-bottom: 30px;
+  background-color: rgb(247, 247, 247);
 }
 
 // 見出し
 .str {
-  display       : inline-block;        /* ブロック化              */
-  font-weight   : bold;                /* 太字                    */
-  font-size     : 150%;                /* 文字を大きくする        */
-  border-bottom : 1px solid #ffff1a;   /* 下線                    */
-  color         : #000000;             /* 文字色                  */
-  background    : linear-gradient(transparent 50%, #ffff1a 65%);  /* ラインマーカーを付ける  */
+  display       : inline-block;        
+  font-weight   : bold;               
+  font-size     : 150%;                
+  border-bottom : 1px solid #ffff1a;  
+  color         : #000000;             
+  background    : linear-gradient(transparent 50%, #ffff1a 65%); 
 }
 
 .about_title {
   font-size: 120%
 }
-
- /* --- BOXの定義 -------------------------------------------------*/
+// ジャンル
  .box {
-  position      : relative;            /* タイトル用に親要素定義  */
-  box-sizing    : border-box;          /* 罫線・余白も含む大きさ  */
-  margin        : 13px auto 0 auto;    /* BOXの位置               */
-  max-width     : 500px;               /* BOXの最大横幅           */
-  background    : #fff;                /* BOXの背景色             */
-  padding       : 32px 10px 25px 10px; /* BOX内の余白             */
-  border        : 2px solid #172642;   /* BOXの枠線               */
+  position      : relative;            
+  box-sizing    : border-box;          
+  margin        : 13px auto 0 auto;    
+  max-width     : 500px;               
+  background    : rgb(247, 247, 247);                
+  padding       : 32px 10px 25px 10px; 
+  border        : 2px solid #172642;
 }
  
- /* --- タイトル部分の定義 ----------------------------------------*/
 .box::before {
-  position      : absolute;          /* 親からの相対位置の定義  */
-  display       : inline-block;      /* インラインボックス定義  */
-  box-sizing    : border-box;        /* 罫線・余白も含む大きさ  */
-  line-height   : 1;                 /* 1行の高さを初期化       */
-  background    : #172642;           /* タイトル背景色          */
-  color         : #ffffff;           /* タイトルの文字色        */
-  content       : attr(title);       /* タイトルに[title]を表示 */
-  font-weight   : bold;              /* タイトルは太字          */
-  padding       : 7px 18px;          /* タイトル内の余白        */
-  top           : -15px;             /* タイトル上位置はマイナス*/
-  left          : 14px;              /* タイトル右位置は1文字分 */
-  border-radius : 14px;              /* タイトルの角丸          */
-  font-size     : 14px;              /* タイトルの文字サイズ    */
+  position      : absolute;          
+  display       : inline-block;      
+  box-sizing    : border-box;       
+  line-height   : 1;                 
+  background    : #172642;           
+  color         : #ffffff;           
+  content       : attr(title);       
+  font-weight   : bold;              
+  padding       : 7px 18px;          
+  top           : -15px;             
+  left          : 14px;              
+  border-radius : 14px;              
+  font-size     : 14px;              
 }
 
 .introduction_field {
-  position      : relative;            /* タイトル用に親要素定義  */
-  box-sizing    : border-box;          /* 罫線・余白も含む大きさ  */
-  margin-top    : 32px;                 /* BOXの位置               */
-  max-width     : 566px;               /* BOXの最大横幅           */
-  background    : #fff;                /* BOXの背景色             */
-  padding       : 25px 10px 25px 10px; /* BOX内の余白             */
-  border        : 2px solid #660000;   /* BOXの枠線               */
+  position      : relative;           
+  box-sizing    : border-box;         
+  margin-top    : 32px;                 
+  max-width     : 566px;              
+  background    : #fff;              
+  padding       : 25px 10px 25px 10px; 
+  border        : 2px solid #660000;  
 }
  
- /* --- タイトル部分の定義 ----------------------------------------*/
+
 .introduction_field::before {
-  position      : absolute;          /* 親からの相対位置の定義  */
-  display       : inline-block;      /* インラインボックス定義  */
-  box-sizing    : border-box;        /* 罫線・余白も含む大きさ  */
-  line-height   : 1;                 /* 1行の高さを初期化       */
-  background    : #ffffff;           /* タイトル背景色          */
-  border        : 2px solid #660000; /* タイトルのの枠線        */
-  color         : #660000;           /* タイトルの文字色        */
-  content       : attr(title);       /* タイトルに[title]を表示 */
-  font-weight   : bold;              /* タイトルは太字          */
-  padding       : 8px 8px;          /* タイトル内の余白        */
-  top           : -34px;             /* 枠線分上を指定          */
-  left          : -2px;              /* 枠線分左を指定          */
-  border-radius : 5px 5px 0 0;     /* タイトルの角丸          */
-  font-size     : 14px;              /* タイトルの文字サイズ    */
+  position      : absolute;          
+  display       : inline-block;      
+  box-sizing    : border-box;       
+  line-height   : 1;                 
+  background    : #ffffff;           
+  border        : 2px solid #660000; 
+  color         : #660000;           
+  content       : attr(title);       
+  font-weight   : bold;              
+  padding       : 8px 8px;          
+  top           : -34px;            
+  left          : -2px;              
+  border-radius : 5px 5px 0 0;     
+  font-size     : 14px;              
 }
 
 .genre_field {
-  position      : relative;            /* タイトル用に親要素定義  */
-  box-sizing    : border-box;          /* 罫線・余白も含む大きさ  */
-  margin-top    : 40px;                /* BOXの位置               */
-  max-width     : 140px;               /* BOXの最大横幅           */
-  background    : #fff;                /* BOXの背景色             */
-  padding       : 7px 3px 7px 5px; /* BOX内の余白             */
-  border        : 2px solid #660000;   /* BOXの枠線               */
+  position      : relative;           
+  box-sizing    : border-box;         
+  margin-top    : 40px;                
+  max-width     : 140px;              
+  background    : #fff;              
+  padding       : 7px 3px 7px 5px; 
+  border        : 2px solid #660000;  
 }
  
- /* --- タイトル部分の定義 ----------------------------------------*/
+
 .genre_field::before {
-  position      : absolute;          /* 親からの相対位置の定義  */
-  display       : inline-block;      /* インラインボックス定義  */
-  box-sizing    : border-box;        /* 罫線・余白も含む大きさ  */
-  line-height   : 1;                 /* 1行の高さを初期化       */
-  background    : #ffffff;           /* タイトル背景色          */
-  border        : 2px solid #660000; /* タイトルのの枠線        */
-  color         : #660000;           /* タイトルの文字色        */
-  content       : attr(title);       /* タイトルに[title]を表示 */
-  font-weight   : bold;              /* タイトルは太字          */
-  padding       : 8px 8px;          /* タイトル内の余白        */
-  top           : -34px;             /* 枠線分上を指定          */
-  left          : -2px;              /* 枠線分左を指定          */
-  border-radius : 5px 5px 0 0;     /* タイトルの角丸          */
-  font-size     : 14px;              /* タイトルの文字サイズ    */
+  position      : absolute;          
+  display       : inline-block;      
+  box-sizing    : border-box;       
+  line-height   : 1;                 
+  background    : #ffffff;           
+  border        : 2px solid #660000; 
+  color         : #660000;           
+  content       : attr(title);       
+  font-weight   : bold;              
+  padding       : 8px 8px;          
+  top           : -34px;            
+  left          : -2px;              
+  border-radius : 5px 5px 0 0;     
+  font-size     : 14px;              
 }
 
 
 .cost_field {
-  position      : relative;            /* タイトル用に親要素定義  */
-  box-sizing    : border-box;          /* 罫線・余白も含む大きさ  */
-  margin-top    : 40px;                /* BOXの位置               */
-  max-width     : 140px;               /* BOXの最大横幅           */
-  background    : #fff;                /* BOXの背景色             */
-  padding       : 7px 3px 7px 5px; /* BOX内の余白             */
-  border        : 2px solid #660000;   /* BOXの枠線               */
+  position      : relative;           
+  box-sizing    : border-box;         
+  margin-top    : 40px;                
+  max-width     : 140px;              
+  background    : #fff;              
+  padding       : 7px 3px 7px 5px; 
+  border        : 2px solid #660000;  
 }
  
- /* --- タイトル部分の定義 ----------------------------------------*/
 .cost_field::before {
-  position      : absolute;          /* 親からの相対位置の定義  */
-  display       : inline-block;      /* インラインボックス定義  */
-  box-sizing    : border-box;        /* 罫線・余白も含む大きさ  */
-  line-height   : 1;                 /* 1行の高さを初期化       */
-  background    : #ffffff;           /* タイトル背景色          */
-  border        : 2px solid #660000; /* タイトルのの枠線        */
-  color         : #660000;           /* タイトルの文字色        */
-  content       : attr(title);       /* タイトルに[title]を表示 */
-  font-weight   : bold;              /* タイトルは太字          */
-  padding       : 8px 8px;          /* タイトル内の余白        */
-  top           : -34px;             /* 枠線分上を指定          */
-  left          : -2px;              /* 枠線分左を指定          */
-  border-radius : 5px 5px 0 0;     /* タイトルの角丸          */
-  font-size     : 14px;              /* タイトルの文字サイズ    */
+  position      : absolute;          
+  display       : inline-block;      
+  box-sizing    : border-box;       
+  line-height   : 1;                 
+  background    : #ffffff;           
+  border        : 2px solid #660000; 
+  color         : #660000;           
+  content       : attr(title);       
+  font-weight   : bold;              
+  padding       : 8px 8px;          
+  top           : -34px;            
+  left          : -2px;              
+  border-radius : 5px 5px 0 0;     
+  font-size     : 14px;              
 }
 
 .time_field {
-  position      : relative;            /* タイトル用に親要素定義  */
-  box-sizing    : border-box;          /* 罫線・余白も含む大きさ  */
-  margin-top    : 40px;                /* BOXの位置               */
-  max-width     : 140px;               /* BOXの最大横幅           */
-  background    : #fff;                /* BOXの背景色             */
-  padding       : 7px 3px 7px 5px; /* BOX内の余白             */
-  border        : 2px solid #660000;   /* BOXの枠線               */
+  position      : relative;           
+  box-sizing    : border-box;         
+  margin-top    : 40px;                
+  max-width     : 140px;              
+  background    : #fff;              
+  padding       : 7px 3px 7px 5px; 
+  border        : 2px solid #660000;  
 }
  
- /* --- タイトル部分の定義 ----------------------------------------*/
 .time_field::before {
-  position      : absolute;          /* 親からの相対位置の定義  */
-  display       : inline-block;      /* インラインボックス定義  */
-  box-sizing    : border-box;        /* 罫線・余白も含む大きさ  */
-  line-height   : 1;                 /* 1行の高さを初期化       */
-  background    : #ffffff;           /* タイトル背景色          */
-  border        : 2px solid #660000; /* タイトルのの枠線        */
-  color         : #660000;           /* タイトルの文字色        */
-  content       : attr(title);       /* タイトルに[title]を表示 */
-  font-weight   : bold;              /* タイトルは太字          */
-  padding       : 8px 8px;          /* タイトル内の余白        */
-  top           : -34px;             /* 枠線分上を指定          */
-  left          : -2px;              /* 枠線分左を指定          */
-  border-radius : 5px 5px 0 0;     /* タイトルの角丸          */
-  font-size     : 14px;              /* タイトルの文字サイズ    */
+  position      : absolute;          
+  display       : inline-block;      
+  box-sizing    : border-box;       
+  line-height   : 1;                 
+  background    : #ffffff;           
+  border        : 2px solid #660000; 
+  color         : #660000;           
+  content       : attr(title);       
+  font-weight   : bold;              
+  padding       : 8px 8px;          
+  top           : -34px;            
+  left          : -2px;              
+  border-radius : 5px 5px 0 0;     
+  font-size     : 14px;              
 }
 
 .material_field {
-  position      : relative;            /* タイトル用に親要素定義  */
-  box-sizing    : border-box;          /* 罫線・余白も含む大きさ  */
-  margin-top    : 40px;                /* BOXの位置               */
-  max-width     : 325px;               /* BOXの最大横幅           */
-  background    : #fff;                /* BOXの背景色             */
-  padding       : 7px 3px 7px 5px; /* BOX内の余白             */
-  border        : 2px solid #660000;   /* BOXの枠線               */
+  position      : relative;           
+  box-sizing    : border-box;         
+  margin-top    : 40px;                
+  max-width     : 325px;              
+  background    : #fff;              
+  padding       : 7px 3px 7px 5px; 
+  border        : 2px solid #660000;  
 }
  
- /* --- タイトル部分の定義 ----------------------------------------*/
+
 .material_field::before {
-  position      : absolute;          /* 親からの相対位置の定義  */
-  display       : inline-block;      /* インラインボックス定義  */
-  box-sizing    : border-box;        /* 罫線・余白も含む大きさ  */
-  line-height   : 1;                 /* 1行の高さを初期化       */
-  background    : #ffffff;           /* タイトル背景色          */
-  border        : 2px solid #660000; /* タイトルのの枠線        */
-  color         : #660000;           /* タイトルの文字色        */
-  content       : attr(title);       /* タイトルに[title]を表示 */
-  font-weight   : bold;              /* タイトルは太字          */
-  padding       : 8px 8px;          /* タイトル内の余白        */
-  top           : -34px;             /* 枠線分上を指定          */
-  left          : -2px;              /* 枠線分左を指定          */
-  border-radius : 5px 5px 0 0;     /* タイトルの角丸          */
-  font-size     : 14px;              /* タイトルの文字サイズ    */
+  position      : absolute;          
+  display       : inline-block;     
+  box-sizing    : border-box;       
+  line-height   : 1;                 
+  background    : #ffffff;           
+  border        : 2px solid #660000; 
+  color         : #660000;          
+  content       : attr(title);       
+  font-weight   : bold;              
+  padding       : 8px 8px;         
+  top           : -34px;           
+  left          : -2px;             
+  border-radius : 5px 5px 0 0;     
+  font-size     : 14px;              
 }
 
 .step_field {
-  position      : relative;            /* タイトル用に親要素定義  */
-  box-sizing    : border-box;          /* 罫線・余白も含む大きさ  */
-  margin-top    : 40px;                 /* BOXの位置               */
-  max-width     : 325px;               /* BOXの最大横幅           */
-  background    : #fff;                /* BOXの背景色             */
-  padding       : 25px 10px 25px 10px; /* BOX内の余白             */
-  border        : 2px solid #660000;   /* BOXの枠線               */
+  position      : relative;           
+  box-sizing    : border-box;         
+  margin-top    : 40px;                
+  max-width     : 325px;              
+  background    : #fff;              
+  padding       : 25px 10px 25px 10px; 
+  border        : 2px solid #660000;  
 }
  
- /* --- タイトル部分の定義 ----------------------------------------*/
+
 .step_field::before {
-  position      : absolute;          /* 親からの相対位置の定義  */
-  display       : inline-block;      /* インラインボックス定義  */
-  box-sizing    : border-box;        /* 罫線・余白も含む大きさ  */
-  line-height   : 1;                 /* 1行の高さを初期化       */
-  background    : #ffffff;           /* タイトル背景色          */
-  border        : 2px solid #660000; /* タイトルのの枠線        */
-  color         : #660000;           /* タイトルの文字色        */
-  content       : attr(title);       /* タイトルに[title]を表示 */
-  font-weight   : bold;              /* タイトルは太字          */
-  padding       : 8px 8px;          /* タイトル内の余白        */
-  top           : -34px;             /* 枠線分上を指定          */
-  left          : -2px;              /* 枠線分左を指定          */
-  border-radius : 5px 5px 0 0;     /* タイトルの角丸          */
-  font-size     : 14px;              /* タイトルの文字サイズ    */
+  position      : absolute;          
+  display       : inline-block;      
+  box-sizing    : border-box;        
+  line-height   : 1;                 
+  background    : #ffffff;           
+  border        : 2px solid #660000; 
+  color         : #660000;           
+  content       : attr(title);      
+  font-weight   : bold;             
+  padding       : 8px 8px;         
+  top           : -34px;             
+  left          : -2px;             
+  border-radius : 5px 5px 0 0;     
+  font-size     : 14px;              
 }
 

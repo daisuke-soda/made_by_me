@@ -39,6 +39,11 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rbenv'
 end
 
 group :development do
@@ -67,7 +72,6 @@ gem 'jquery-rails'
 gem 'kaminari','~> 1.1.1'
 gem 'refile', '~> 0.6.2', require: "refile/rails", github: 'manfe/refile'
 gem 'refile-mini_magick'
-gem 'acts-as-taggable-on', '~> 6.0'
 gem 'ransack'
 gem 'cocoon'
 gem 'pry-rails'

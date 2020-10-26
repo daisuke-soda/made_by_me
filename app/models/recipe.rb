@@ -9,7 +9,6 @@ class Recipe < ApplicationRecord
   accepts_nested_attributes_for :steps, allow_destroy: true
 
   attachment :recipe_image
-  acts_as_taggable
 
   validates :name, presence: true
   validates :introduction, presence: true

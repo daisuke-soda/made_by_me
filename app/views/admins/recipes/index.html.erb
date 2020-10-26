@@ -1,13 +1,33 @@
-<% @recipes.each do |recipe| %>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <span class="str">
+        <i class="far fa-bell"> レシピ一覧</i>
+      </span>
+      
+      <div class="row">
+        <% @recipes.each do |recipe| %>
+        <div class="col-md-4">
+          <div class="card">
+            <%= attachment_image_tag recipe, :recipe_image,:size =>'250x200'  %>
+              
+            <div class="card-body">
+              <h5 class="card-title">
+                <%= recipe.name %>
+              </h5>
 
-<%= attachment_image_tag recipe, :recipe_image  %>
-<%= attachment_image_tag recipe.user, :profile_image, fallback: "no-image.png", :size =>'100x100' %>
-
-
-<%= recipe.user.name %>
-<%= recipe.name %>
-
-<%= link_to "削除",admins_recipe_path(recipe), method: :delete, data: {confirm: "本当に削除しますか？"} %>
-admins_recipe_path
-
-<% end %>
+              <p class="card-text">
+                <%= recipe.introduction %><br>
+                <%= attachment_image_tag recipe.user, :profile_image, fallback: "no-image.png", :size =>'40x40' %>
+                <%= recipe.user.name %>
+                <%= recipe.name %><br>
+                <%= link_to("削除",admins_recipe_path(recipe),{class: "btn btn-danger btn-sm", method: :delete, data: {confirm: "本当に削除しますか？"}}) %>
+              </p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      </div>
+      <%= paginate @recipes %>
+  </div>
+</div>

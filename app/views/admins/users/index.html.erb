@@ -1,7 +1,30 @@
-<% @users.each do |user| %>
+<div class="container">
+  <div class="row">
+    <div class="mx-auto" style="width: 200px;">
+      <span class="str">
+        <h3>ユーザー一覧</h3>
+      </span>
+    </div>
 
-<%=link_to user.name, admins_user_path(user) %>
-<%= user.email %>
+    <div class="col-12">
+      <table class="table table-condensed">
 
-<% end %>
+        <thead>
+          <th>名前</th>
+          <th>メールアドレス</th>
+          <th></th>
+        </thead>
 
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%=link_to user.name, admins_user_path(user) %></td>
+              <td><%= user.email %></td>    
+            </tr>
+          <% end %> 
+        </tbody>
+        
+      </table>
+    </div>
+  </div>
+</div>

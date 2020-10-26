@@ -1,30 +1,28 @@
 class RecipesController < ApplicationController
-  
+
   def index
     @recipes = Recipe.all
     @genres = Genre.all
     if params[:genre_id]
     @genre = Genre.find(params[:genre_id])
     @recipes = @genre.recipes
-    @search_recipes = @genre.recipes.page(params[:page]).per(3)
+    @search_recipes = @genre.recipes.page(params[:page]).per(9)
     else
     @recipes = Recipe.all
-    end
-    # タグ機能
-    @recipe = Recipe.includes(:user,:tags).all.order('created_at DESC')
-    if params[:tag_name]
-      @recipes = Recipe.tagged_with("#{params[:tag_name]}")
     end
   end
 
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.user_id = current_user.id
-    @recipe.save!
+    if @recipe.save!
     params[:recipe][:steps_attributes].permit!.to_h.each.with_index(1) do |s,index|
     @recipe.steps.create!(description: s[1]["description"],step_image: s[1]["step_image"],step_order: index )
     end
     redirect_to recipe_path(@recipe)
+    else
+      render :new
+    end
   end
 
   def new
@@ -44,13 +42,15 @@ class RecipesController < ApplicationController
   def edit
     @recipe = Recipe.find(params[:id])
     @genres = Genre.all
+    if @recipe.user != current_user
+      redirect_to recipes_path, alert: '不正なアクセスです。'
+    end
   end
 
   def update
     @recipe = Recipe.find(params[:id])
     @recipe.update(recipe_params)
     params[:recipe][:steps_attributes].permit!.to_h.each.with_index(1) do |s,index|
-
       if s[1]['_destroy'] == '1'
         if s[1]['id']
           @recipe.steps.find(s[1]['id']).destroy

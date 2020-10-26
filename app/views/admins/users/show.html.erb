@@ -1,5 +1,35 @@
-<%= @user.name %>
-<%= @user.email %>
+<div class="container">
+  <div class="row">
+    <div class="mx-auto" style="width: 200px;">
+      <span class="str">
+        <h3>ユーザー詳細</h3>
+      </span>
+    </div>
 
-<%= link_to "退会する",admins_user_path(@user), method: :delete, data: {confirm: "本当に削除しますか？"} %>
+    <div class="col-12">
+      <table class="table table-condensed">
+
+        <thead>
+          <th>名前</th>
+          <th>メールアドレス</th>
+          <th></th>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td><%= @user.name %></td>
+            <td><%= @user.email %></td>
+            <td><%= link_to("強制退会",admins_user_path(@user),{class: "btn btn-danger btn-sm", method: :delete, data: {confirm: "本当に退会しますか？"}}) %></td>
+          </tr>
+        </tbody>
+        
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+
+
 
