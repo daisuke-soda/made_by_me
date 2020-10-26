@@ -8,7 +8,7 @@ class Admins::HomeController < ApplicationController
     else
     @recipes = Recipe.all
     end
-    @recipes = Recipe.page(params[:page]).per(9)
+    @recipes = Recipe.page(params[:page]).per(6)
   end
   
 end

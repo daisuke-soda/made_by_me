@@ -19,8 +19,7 @@
               <p class="card-text">
                 <%= recipe.introduction %><br>
                 <%= attachment_image_tag recipe.user, :profile_image, fallback: "no-image.png", :size =>'40x40' %>
-                <%= recipe.user.name %>
-                <%= recipe.name %><br>
+                <%= recipe.user.name %><br>
                 <%= link_to("削除",admins_recipe_path(recipe),{class: "btn btn-danger btn-sm", method: :delete, data: {confirm: "本当に削除しますか？"}}) %>
               </p>
             </div>

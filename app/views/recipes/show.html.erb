@@ -64,20 +64,16 @@
                        <tr>
                           <td><%= comment.comment_content %></td>
                           <td><%= comment.user.name %>さん</td>
+                        <% if comment.user.id == current_user.id  %>
                           <td><%= link_to "コメント削除", recipe_comment_path(@recipe, comment), method: :delete %></td>
                         <% end %>
+                      <% end %>
                       </tr>
                         <% if @recipe.user.id == current_user.id %>
                           <%= link_to("レシピを編集", edit_recipe_path(@recipe),{class: "btn btn-primary btn-md"}) %>
                         <% end %>
                       
                         <% end %>
-
-
-                        <% @recipe.tag_list.each do |tag| %>
-                        <%= tag %>
-                    <% end %>
-
 
                 </thead>
               </table>
