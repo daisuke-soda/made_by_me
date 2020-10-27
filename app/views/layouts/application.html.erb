@@ -56,10 +56,10 @@
                 <%= link_to(" ジャンル一覧", admins_genres_path,{class: "btn btn-radius-solid"}) %>
               </li>
               <li class="nav-item">
-                <%= link_to(" 会員一覧", admins_users_path,{class: "btn btn-radius-solid"}) %>
+                <%= link_to(" ユーザー一覧", admins_users_path,{class: "btn btn-radius-solid"}) %>
               </li>
               <li class="nav-item">
-                <%= link_to(" レシピ一覧", admins_recipes_path,{class: "btn btn-radius-solid"}) %>
+                <%= link_to(" レシピ管理", admins_recipes_path,{class: "btn btn-radius-solid"}) %>
               </li>
               <li class="nav-item">
                 <%= link_to(" ログアウト", destroy_admin_session_path,{class: "btn btn-radius-solid", method: :delete}) %>
@@ -95,10 +95,14 @@
       </nav>
     </header>
     
+    <%= flash[:notice] %>
     <!-- メインビジュアル -->
     <div id="container"></div>
     
     <%= yield %>
+    <footer class="footer">
+      <p class="footer-text">© Made by me</p>
+    </footer>
     
   </body>
 </html>

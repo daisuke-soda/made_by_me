@@ -1,7 +1,9 @@
-<div class="panel" style="margin-top: 50px;">
-  <div class="box" title="ジャンル">
-    <% genres.each do |genre| %>
-      <dd><%= link_to genre.name, recipes_path(genre_id: genre.id), :style=>"color:#172642;" %></dd>
-    <% end %>
+<div class="d-none d-md-block">
+  <div class="panel" style="margin-top: 50px;">
+    <div class="box" title="ジャンル">
+      <% genres.each do |genre| %>
+        <dd><%= link_to genre.name, recipes_path(genre_id: genre.id), :style=>"color:#172642;" %></dd>
+      <% end %>
+    </div>
   </div>
 </div>
