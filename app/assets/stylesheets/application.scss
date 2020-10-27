@@ -101,6 +101,11 @@ h2:before {
   background: linear-gradient(to top, #fdfbfb 0%, #ebedee 100%);
 }
 
+.footer {
+  text-align: center;
+  padding-top: 100px;
+}
+
 // ページネーション
 .pagination {
   justify-content: center;
@@ -125,6 +130,10 @@ h2:before {
   border-bottom : 1px solid #ffff1a;  
   color         : #000000;             
   background    : linear-gradient(transparent 50%, #ffff1a 65%); 
+}
+
+.caution{
+  color: red;
 }
 
 .about_title {

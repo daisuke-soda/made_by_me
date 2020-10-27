@@ -11,7 +11,7 @@
       
               <% if @recipe.errors.any? %>
           <div id="error_explanation">
-            <h3>入力内容をご確認ください。</h3>
+            <h3>入力内容をご確認下さい。</h3>
             <ul>
               <% @recipe.errors.full_messages.each do |message| %>
                 <li><%= message %></li>
@@ -22,6 +22,10 @@
 
       <span class="str">
         <h3>レシピ投稿</h3>
+      </span>
+
+      <span class="caution">
+        <p>※全ての項目に入力して下さい</p>
       </span>
 
         <%= form_for(@recipe, url:recipes_path) do |f| %>

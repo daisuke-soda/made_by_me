@@ -3,5 +3,4 @@ class Step < ApplicationRecord
 
   attachment :step_image
 
-  validates :description, presence: true
 end

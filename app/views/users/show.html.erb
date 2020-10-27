@@ -20,7 +20,7 @@
                 <td>
                 <%= attachment_image_tag @user, :profile_image, fallback: "no-image.png", :size =>'100x100' %>
                 <%= @user.name %>
-                <%= link_to "編集する", edit_user_path(@user) %>
+                <%= link_to("編集する", edit_user_path(@user),{class: "btn btn-primary btn-sm"}) %>
                 </td>
               </tr>
 

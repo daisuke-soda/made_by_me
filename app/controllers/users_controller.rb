@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, expect: [:index, :show]
 
   def show
     @user = User.find(params[:id])
@@ -24,6 +23,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.destroy
     redirect_to users_withdrawn_path
+  end
+
+  def unsubscribe 
+  end
+
+  def withdrawn
   end
 
   private
