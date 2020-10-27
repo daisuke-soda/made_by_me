@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
-
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
     passwords:     'admins/passwords',
-    registrations: 'admins/registrations'
+    registrations: 'admins/registrations',
   }
 
   namespace :admins do
@@ -16,7 +15,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     sessions:      'users/sessions',
     passwords:     'users/passwords',
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
   }
 
   root 'home#top'
@@ -24,15 +23,14 @@ Rails.application.routes.draw do
   get 'users/unsubscribe' => 'users#unsubscribe'
   get 'users/withdrawn' => 'users#withdrawn'
   post '/guests/guest_sign_in', to: 'guests#new_guest'
-  
-  resources :favorites, only:[:index]
-  resources :steps, only:[:index, :create]
-  resources :recipes, only:[:index, :create, :new, :show, :edit, :update, :destroy] do
+
+  resources :favorites, only: [:index]
+  resources :steps, only: [:index, :create]
+  resources :recipes, only: [:index, :create, :new, :show, :edit, :update, :destroy] do
     resource :favorites, only: [:create, :destroy]
-    resources :comments, only:[:index, :create, :destroy]
+    resources :comments, only: [:index, :create, :destroy]
   end
-  resources :users, only:[:show, :edit, :update, :destroy] do
+  resources :users, only: [:show, :edit, :update, :destroy] do
     get :favorites, on: :collection
   end
-
 end

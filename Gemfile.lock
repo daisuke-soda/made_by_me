@@ -136,6 +136,7 @@ GEM
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
     io-like (0.3.1)
+    jaro_winkler (1.5.4)
     jbuilder (2.10.1)
       activesupport (>= 5.0.0)
     jquery-rails (4.4.0)
@@ -192,6 +193,7 @@ GEM
     polyamorous (2.3.2)
       activerecord (>= 5.2.1)
     popper_js (1.16.0)
+    powerpack (0.1.2)
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -256,25 +258,19 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
-    rexml (3.2.4)
-    rubocop (1.0.0)
+    rubocop (0.58.2)
+      jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
-      parser (>= 2.7.1.5)
+      parser (>= 2.5, != 2.5.1.1)
+      powerpack (~> 0.1)
       rainbow (>= 2.2.2, < 4.0)
-      regexp_parser (>= 1.8)
-      rexml
-      rubocop-ast (>= 0.6.0)
       ruby-progressbar (~> 1.7)
-      unicode-display_width (>= 1.4.0, < 2.0)
-    rubocop-ast (1.0.1)
-      parser (>= 2.7.1.5)
-    rubocop-performance (1.8.1)
-      rubocop (>= 0.87.0)
-      rubocop-ast (>= 0.4.0)
-    rubocop-rails (2.8.1)
-      activesupport (>= 4.2.0)
-      rack (>= 1.1)
-      rubocop (>= 0.87.0)
+      unicode-display_width (~> 1.0, >= 1.0.1)
+    rubocop-airbnb (2.0.0)
+      rubocop (~> 0.58.0)
+      rubocop-rspec (~> 1.30.0)
+    rubocop-rspec (1.30.0)
+      rubocop (>= 0.58.0)
     ruby-progressbar (1.10.1)
     ruby2_keywords (0.0.2)
     ruby_dep (1.5.0)
@@ -374,9 +370,7 @@ DEPENDENCIES
   ransack
   refile (~> 0.6.2)!
   refile-mini_magick
-  rubocop
-  rubocop-performance
-  rubocop-rails
+  rubocop-airbnb (~> 2)
   sass-rails (~> 5.0)
   selenium-webdriver
   spring
