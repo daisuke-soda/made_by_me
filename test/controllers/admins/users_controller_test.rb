@@ -20,5 +20,4 @@ class Admins::UsersControllerTest < ActionDispatch::IntegrationTest
     get admins_users_update_url
     assert_response :success
   end
-
 end

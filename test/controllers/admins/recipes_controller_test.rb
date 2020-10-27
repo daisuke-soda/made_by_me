@@ -10,5 +10,4 @@ class Admins::RecipesControllerTest < ActionDispatch::IntegrationTest
     get admins_recipes_destroy_url
     assert_response :success
   end
-
 end

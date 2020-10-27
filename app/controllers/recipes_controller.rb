@@ -1,14 +1,13 @@
 class RecipesController < ApplicationController
-
   def index
     @recipes = Recipe.all
     @genres = Genre.all
     if params[:genre_id]
-    @genre = Genre.find(params[:genre_id])
-    @recipes = @genre.recipes
-    @search_recipes = @genre.recipes.page(params[:page]).per(6)
+      @genre = Genre.find(params[:genre_id])
+      @recipes = @genre.recipes
+      @search_recipes = @genre.recipes.page(params[:page]).per(6)
     else
-    @recipes = Recipe.all
+      @recipes = Recipe.all
     end
   end
 
@@ -17,10 +16,10 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
     @recipe.user_id = current_user.id
     if @recipe.save
-    params[:recipe][:steps_attributes].permit!.to_h.each.with_index(1) do |s,index|
-    @recipe.steps.create!(description: s[1]["description"],step_image: s[1]["step_image"],step_order: index )
-    end
-    redirect_to recipe_path(@recipe)
+      params[:recipe][:steps_attributes].permit!.to_h.each.with_index(1) do |s, index|
+        @recipe.steps.create!(description: s[1]["description"], step_image: s[1]["step_image"], step_order: index)
+      end
+      redirect_to recipe_path(@recipe)
     else
       render :new
     end
@@ -51,19 +50,18 @@ class RecipesController < ApplicationController
   def update
     @recipe = Recipe.find(params[:id])
     @recipe.update(recipe_params)
-    params[:recipe][:steps_attributes].permit!.to_h.each.with_index(1) do |s,index|
+    params[:recipe][:steps_attributes].permit!.to_h.each.with_index(1) do |s, index|
       if s[1]['_destroy'] == '1'
         if s[1]['id']
           @recipe.steps.find(s[1]['id']).destroy
         end
       else
         if s[1]['id']
-          @recipe.steps.find(s[1]['id']).update(description: s[1]["description"],step_image: s[1]["step_image"],step_order: index )
+          @recipe.steps.find(s[1]['id']).update(description: s[1]["description"], step_image: s[1]["step_image"], step_order: index)
         else
-          @recipe.steps.create!(description: s[1]["description"],step_image: s[1]["step_image"],step_order: index )
+          @recipe.steps.create!(description: s[1]["description"], step_image: s[1]["step_image"], step_order: index)
         end
       end
-      
     end
     redirect_to recipe_path(@recipe)
   end
@@ -75,6 +73,7 @@ class RecipesController < ApplicationController
   end
 
   private
+
   def recipe_params
     params.require(:recipe).permit(:genre_id, :name, :recipe_image, :introduction, :cost, :time, :material, :tag_list)
   end

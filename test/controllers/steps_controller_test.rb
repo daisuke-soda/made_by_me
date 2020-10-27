@@ -10,5 +10,4 @@ class StepsControllerTest < ActionDispatch::IntegrationTest
     get steps_create_url
     assert_response :success
   end
-
 end
