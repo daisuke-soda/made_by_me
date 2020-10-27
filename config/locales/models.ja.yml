@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    attributes:
+      recipe:
+        name: レシピタイトル
+        introduction: レシピの説明
+        cost: かかった費用
+        time: 所要時間
+        material: 材料・工具
