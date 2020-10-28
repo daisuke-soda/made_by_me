@@ -47,3 +47,6 @@ https://o-dan.net/ja/
 
 写真AC（金曜大工プロフィールページ）
 https://www.photo-ac.com/profile/938477
+
+DesignEvo(フリーロゴメーカー)
+https://www.designevo.com/jp/
