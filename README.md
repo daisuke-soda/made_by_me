@@ -1,4 +1,5 @@
 # Made by Me
+![logo1](https://user-images.githubusercontent.com/68390854/97403037-07d18780-1937-11eb-9c4d-aa9b54e02aa1.png)
 
 ## サイト概要
 DIYレシピの投稿型コミュニティサイトです。
