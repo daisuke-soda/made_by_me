@@ -12,9 +12,11 @@
         <h3><%= @recipe.name %></h3>
       </span>
 
+      <div class="row">
         <div class="img_field">
           <%= attachment_image_tag @recipe, :recipe_image,:size =>'566x350' %>
         </div>
+      </div>
 
         <div class="introduction_field" title="レシピ説明">
           <%= @recipe.introduction %>
@@ -45,30 +47,34 @@
 
           <% end %>
 
+          <!-- お気に入り・コメント機能 -->
             <% if user_signed_in? %>
-              <%= render 'recipes/favoriteform', recipe: @recipe%>
-
-              <%= form_for [@recipe, @comment] do |f| %>
+              <span id="favorite-<%= @recipe.id %>">
+                <%= render 'recipes/favoriteform', recipe: @recipe%>
+              </span>
+           　  
+              <%= form_with model: [@recipe, @comment], remote: true do |f| %>
               <%= f.text_area :comment_content,:size =>'80x5' %>
               <%= f.submit "コメントする", class: "btn btn-radius-solid" %>
             <% end %>
 
-              <div class="table-responsive">
-                <table class="table table-condensed">
+       　　   <div class="table-responsive">
+          　　  <table class="table table-condensed">
         
+                　
                   <thead>
                       <th>コメント欄</th>
-
-                        <% @comments.each do |comment| %>
-
-                        <tr>
-                            <td><%= comment.comment_content %></td>
-                            <td><%= comment.user.name %>さん</td>
-                          <% if comment.user.id == current_user.id  %>
-                            <td><%= link_to "コメント削除", recipe_comment_path(@recipe, comment), method: :delete %></td>
-                          <% end %>
+                      <% @comments.each do |comment| %>
+                      <tr>
+                        <td><%= comment.comment_content %></td>
+                        <td><%= comment.user.name %>さん</td>
+                      
+                        <% if comment.user.id == current_user.id  %>
+                        <td><%= link_to "コメント削除", recipe_comment_path(@recipe, comment), method: :delete, remote: true %></td>
                         <% end %>
-                        </tr>
+                      <% end %>
+                      </tr>
+
                           <% if @recipe.user.id == current_user.id %>
                             <%= link_to("レシピを編集", edit_recipe_path(@recipe),{class: "btn btn-primary btn-md"}) %>
                           <% end %>
@@ -78,6 +84,5 @@
                   </thead>
                 </table>
               </div>
-      
   </div>
 </div>
