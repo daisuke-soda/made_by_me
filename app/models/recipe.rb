@@ -10,6 +10,10 @@ class Recipe < ApplicationRecord
 
   attachment :recipe_image
 
+  def favorited_by?(user)
+    favorites.where(user_id: user.id).exists?
+  end
+
   validates :name, presence: true
   validates :introduction, presence: true
   validates :cost, presence: true

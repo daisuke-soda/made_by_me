@@ -8,18 +8,29 @@ class FavoritesController < ApplicationController
   end
 
   def create
-    @favorite = current_user.favorites.create(recipe_id: params[:recipe_id])
-    redirect_back(fallback_location: root_path)
-end
+    @recipe = Recipe.find(params[:recipe_id])
+    favorite = @recipe.favorites.new(user_id: current_user.id)
+    favorite.save
+    
+  end
 
   def destroy
     @recipe = Recipe.find(params[:recipe_id])
-    @favorite = current_user.favorites.find_by(recipe_id: @recipe.id)
-    @favorite.destroy
-    redirect_back(fallback_location: root_path)
+    favorite = current_user.favorites.find_by(recipe_id: @recipe.id)
+    favorite.destroy
   end
 
   private
+
+  private
+  def redirect
+    case params[:redirect_id].to_i
+    when 0
+      redirect_to books_path
+    when 1
+      redirect_to book_path(@book)
+    end
+  end
 
   def set_recipe
     @recipe = Recipe.find(params[:recipe_id])
