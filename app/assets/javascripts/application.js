@@ -21,21 +21,6 @@
 //= require cocoon
 //= require_tree .
 
-$(document).ready(function () {
-  $("#theTarget").skippr({
-    transition : 'slide',
-    speed : 1000,
-    easing : 'easeOutQuart',
-    navType : 'block',
-    childrenElementType : 'div',
-    arrows : true,
-    autoPlay : true,
-    autoPlayDuration : 3000,
-    keyboardOnAlways : true,
-    hidePrevious : false
-  });
-});
-
 $(document).on("turbolinks:load", function(){
 	// /recipes#new,editでの画像プレビュー
 	function readURL(input) {
@@ -51,7 +36,7 @@ $(document).on("turbolinks:load", function(){
 		readURL(this);
 	})
 
-	// ステップナンバー追加
+	// ステップナンバー自動追加
 	var button = document.querySelector('.add_fields')
 	 
 		 button.addEventListener('click', function() {
