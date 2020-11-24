@@ -3,9 +3,10 @@
     <span class="str">
       <h3>ユーザー登録</h3>
     </span>
-    
+     
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
       <div class="form-group">
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "users/shared/error_messages", resource: resource %>
       </div>
 
@@ -46,7 +47,7 @@
         </div>
       </div>
 
-      <% end %>
+    <% end %>
       
         <%= render "users/shared/links" %>
 

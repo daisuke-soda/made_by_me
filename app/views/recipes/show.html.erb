@@ -54,15 +54,14 @@
               </span>
            　  
               <%= form_with model: [@recipe, @comment], remote: true do |f| %>
-              <%= f.text_area :comment_content,:size =>'80x5' %>
-              <%= f.submit "コメントする", class: "btn btn-radius-solid" %>
-            <% end %>
+                <%= f.text_area :comment_content,:size =>'80x5' %>
+                <%= f.submit "コメントする", class: "btn btn-radius-solid" %>
+              <% end %>
 
-       　　   <div class="table-responsive">
-          　　  <table class="table table-condensed">
+       　　     <div class="table-responsive">
+          　　    <table class="table table-condensed">
         
-                　
-                  <thead>
+                    <thead>
                       <th>コメント欄</th>
                       <% @comments.each do |comment| %>
                       <tr>
@@ -74,15 +73,16 @@
                         <% end %>
                       <% end %>
                       </tr>
+                            
+                <% end %>
 
-                          <% if @recipe.user.id == current_user.id %>
-                            <%= link_to("レシピを編集", edit_recipe_path(@recipe),{class: "btn btn-primary btn-md"}) %>
-                          <% end %>
-                        
-                          <% end %>
+                    </thead>
+                  </table>
 
-                  </thead>
-                </table>
-              </div>
+                    <% if @recipe.user.id == current_user.id %>
+                      <%= link_to("レシピを編集", edit_recipe_path(@recipe),{class: "btn btn-primary btn-md"}) %>
+                    <% end %>
+
+                </div>
   </div>
 </div>

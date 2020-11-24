@@ -1,10 +1,10 @@
 <td>
   <% if recipe.favorited_by?(current_user) %>
-    <%= link_to recipe_favorites_path(recipe, redirect_id: 0), method: :delete, remote: true do %>
+    <%= link_to recipe_favorites_path(recipe), method: :delete, remote: true do %>
     <i class="fas fa-heart" aria-hidden="true "style="color: #FF9999	" ></i>お気に入り
     <% end %>
   <% else %>
-    <%= link_to recipe_favorites_path(recipe, redirect_id: 0), method: :post, remote: true do %>
+    <%= link_to recipe_favorites_path(recipe), method: :post, remote: true do %>
     <i class="fas fa-heart" aria-hidden="true"style="color: #CCCCCC	" ></i>お気に入り
     <% end %>
   <% end %> 
