@@ -72,17 +72,16 @@
                         <td><%= link_to "コメント削除", recipe_comment_path(@recipe, comment), method: :delete, remote: true %></td>
                         <% end %>
                       <% end %>
-                      </tr>
-                            
+                      </tr>        
+                    </thead>
+
+                  </table>
+                </div>
+
+                <% if @recipe.user.id == current_user.id %>
+                  <%= link_to("レシピを編集", edit_recipe_path(@recipe),{class: "btn btn-primary btn-md"}) %>
                 <% end %>
 
-                    </thead>
-                  </table>
-
-                    <% if @recipe.user.id == current_user.id %>
-                      <%= link_to("レシピを編集", edit_recipe_path(@recipe),{class: "btn btn-primary btn-md"}) %>
-                    <% end %>
-
-                </div>
+            <% end %>
   </div>
 </div>
