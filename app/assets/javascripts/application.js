@@ -37,30 +37,25 @@ $(document).on("turbolinks:load", function(){
 	})
 
 	// ステップナンバー自動追加
-	var button = document.querySelector('.add_fields')
-	 
-		 button.addEventListener('click', function() {
-			 setTimeout(
-				 function() {
-					const elements = document.querySelectorAll('.nested-fields');
-					const targetElement = elements[elements.length - 1];
-					const inputElement = targetElement.children[1].children[1].children[1];
-					const imageElement = targetElement.children[1].children[0];
-					imageElement.id = 'img_prev_step' + `${elements.length}`;
-					inputElement.id = 'input_image_step' + `${elements.length}`;
+	$('.add_fields').on('click', function(){
+		setTimeout(
+			function() {
+			const elements = document.querySelectorAll('.nested-fields');
+			const targetElement = elements[elements.length - 1];
+			const inputElement = targetElement.children[1].children[1].children[1];
+			const imageElement = targetElement.children[1].children[0];
+			imageElement.id = 'img_prev_step' + `${elements.length}`;
+			inputElement.id = 'input_image_step' + `${elements.length}`;
 
-					$(".image_input").on("change", function(){
-						readURL(this);
-					})
-					console.log(inputElement)
-					targetElement.firstElementChild.innerText = 'ステップ' + `${elements.length}`
-
-				 },
-				 '50'
-			 );
-		 });
-	
-		 
-});
+			$(".image_input").on("change", function(){
+				readURL(this);
+			})
+			console.log(inputElement)
+			targetElement.firstElementChild.innerText = 'ステップ' + `${elements.length}`
+			},
+			'50'
+		);
+	})
+ });
 
 
