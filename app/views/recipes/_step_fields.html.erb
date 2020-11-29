@@ -1,11 +1,11 @@
 <div class="nested-fields well well-compact">
   <p>ステップ<%= f.object.step_order %></p>
   <div class="form-group">
-    <%= attachment_image_tag f.object, :step_image, id: "img_prev_step" + f.index.to_s(), fallback: "no-image.png", class: "step_image", size:"300x240" %>
+    <%= attachment_image_tag f.object, :step_image, id: "img_prev_step" + f.index.to_s(), fallback: "no-image.png", class: "step_image", class: "img-fluid" %>
     <dd><%= f.attachment_field :step_image, class: "image_input" %></dd>
 
     <dt><%= f.label :"説明" %></dt>
-    <dd><%= f.text_area :description, size: "80x5" %></dd>
+    <dd><%= f.text_area :description, class: "form-control" %></dd>
 
     <div class ="btn btn-radius-solid">
       <%= link_to_remove_association "ステップを取り消す", f %>
