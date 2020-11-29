@@ -16,18 +16,18 @@
 
           <div class="form-group">
             <dt><%= f.label :"レシピタイトル" %></dt>
-            <dd><%= f.text_field :name, size: "80x10" %></dd>
+            <dd><%= f.text_field :name, class: "form-control" %></dd>
           </div>
 
           <div class="image_field">
             <dt><%= f.label :"トップ画像" %></dt>
-            <%= attachment_image_tag @recipe, :recipe_image, id: "img_prev", fallback: "no-image.png", class: "recipe_image", size:"566x350" %>
+            <%= attachment_image_tag @recipe, :recipe_image, id: "img_prev", fallback: "no-image.png", class: "recipe_image", class: "img-fluid" %>
             <dd><%= f.attachment_field :recipe_image %></dd>
           </div>
 
           <div class="form-group">
             <dt><%= f.label :"レシピの説明" %></dt>
-            <dd><%= f.text_area :introduction, size: "80x10" %></dd>
+            <dd><%= f.text_area :introduction, class: "form-control" %></dd>
           </div>
 
           <div class="form-group">
@@ -47,7 +47,7 @@
 
           <div class="form-group">
             <dt><%= f.label :"材料・工具" %></dt>
-            <dd><%= f.text_area :material, size: "80x5" %></dd>
+            <dd><%= f.text_area :material, class: "form-control" %></dd>
           </div>
 
           <!-- ステップ入力 -->
