@@ -14,7 +14,7 @@
 
       <div class="row">
         <div class="img_field">
-          <%= attachment_image_tag @recipe, :recipe_image,:size =>'566x350' %>
+          <%= attachment_image_tag @recipe, :recipe_image, class: "img-fluid" %>
         </div>
       </div>
 
@@ -41,7 +41,7 @@
           <% @steps.each do |step| %>
 
             <div class="step_field" title="ステップ<%= step.step_order %>">
-              <%= attachment_image_tag step, :step_image,:size =>'300x240' %>
+              <%= attachment_image_tag step, :step_image, class: "img-fluid" %>
               <%= step.description %>
             </div>
 
@@ -54,7 +54,7 @@
               </span>
            　  
               <%= form_with model: [@recipe, @comment], remote: true do |f| %>
-                <%= f.text_area :comment_content,:size =>'80x5' %>
+                <%= f.text_area :comment_content, class: "form-control" %>
                 <%= f.submit "コメントする", class: "btn btn-radius-solid" %>
               <% end %>
 
@@ -83,5 +83,6 @@
                 <% end %>
 
             <% end %>
+    </div>
   </div>
 </div>
